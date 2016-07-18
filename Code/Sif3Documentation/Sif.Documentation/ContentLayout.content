@@ -1,18 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Topics>
-  <Topic id="9fe6d9cf-ef6f-441b-b1f5-e12a3d9462be" visible="True" isDefault="true" isSelected="true" title="Welcome to the [TODO: Add project name]">
+  <Topic id="9fe6d9cf-ef6f-441b-b1f5-e12a3d9462be" visible="True" isDefault="true" title="Welcome to the SIF3 Framework (.NET)">
     <HelpKeywords>
       <HelpKeyword index="K" term="Welcome" />
     </HelpKeywords>
   </Topic>
+  <Topic id="527af758-7eea-4d12-b6b2-3a8543c08cae" visible="True" title="Guidelines for contributing changes" />
   <Topic id="57ced89f-2db6-4309-8a16-77a8ef3b58c4" visible="True" isExpanded="true" title="Version History">
     <HelpKeywords>
       <HelpKeyword index="K" term="version, history" />
     </HelpKeywords>
-    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" title="Version 1.0.0.0">
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True">
       <HelpKeywords>
         <HelpKeyword index="K" term="version, 1.0.0.0" />
       </HelpKeywords>
     </Topic>
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" isSelected="true" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" visible="True" />
+    <Topic id="57ced89f-2db6-4309-8a16-77a8ef3b58c4" visible="True" />
   </Topic>
 </Topics>

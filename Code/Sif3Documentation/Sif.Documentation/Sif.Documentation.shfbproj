@@ -75,7 +75,46 @@
     <Folder Include="media" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\Contributing.aml" />
+    <None Include="Content\VersionHistory\v0.10.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.10.1.0.aml" />
+    <None Include="Content\VersionHistory\v0.11.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.12.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.13.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.13.1.0.aml" />
+    <None Include="Content\VersionHistory\v0.13.2.0.aml" />
+    <None Include="Content\VersionHistory\v0.14.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.15.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.15.1.0.aml" />
+    <None Include="Content\VersionHistory\v0.16.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.16.1.0.aml" />
+    <None Include="Content\VersionHistory\v0.17.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.17.1.0.aml" />
+    <None Include="Content\VersionHistory\v0.17.2.0.aml" />
+    <None Include="Content\VersionHistory\v0.18.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.18.1.0.aml" />
+    <None Include="Content\VersionHistory\v0.19.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.19.1.0.aml" />
+    <None Include="Content\VersionHistory\v0.2.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.1.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.20.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.20.1.0.aml" />
+    <None Include="Content\VersionHistory\v0.21.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.22.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.3.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.4.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.5.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.6.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.7.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.7.1.0.aml" />
+    <None Include="Content\VersionHistory\v0.8.0.0.aml" />
+    <None Include="Content\VersionHistory\v0.9.0.0.aml" />
     <None Include="Content\VersionHistory\v1.0.0.0.aml" />
+    <None Include="Content\VersionHistory\v1.1.0.0.aml" />
+    <None Include="Content\VersionHistory\v1.1.1.0.aml" />
+    <None Include="Content\VersionHistory\v1.1.2.0.aml" />
+    <None Include="Content\VersionHistory\v2.0.0.0.aml" />
+    <None Include="Content\VersionHistory\v2.1.0.0.aml" />
     <None Include="Content\VersionHistory\VersionHistory.aml" />
     <None Include="Content\Welcome.aml" />
   </ItemGroup>

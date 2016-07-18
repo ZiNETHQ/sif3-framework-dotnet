@@ -2,7 +2,7 @@
 <topic id="57ced89f-2db6-4309-8a16-77a8ef3b58c4" revisionNumber="1">
 	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
 		<introduction>
-			<para>The topics in this section describe the various changes made to the [TODO: Project Title] over the
+			<para>The topics in this section describe the various changes made to the SIF3 Framework (.NET) over the
 life of the project.</para>
 		</introduction>
 
@@ -14,10 +14,6 @@ life of the project.</para>
 				<list class="bullet">
 					<listItem>
 						<para><link xlink:href="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" /></para>
-					</listItem>
-
-					<listItem>
-						<para>[TODO: Add links to each specific version page]</para>
 					</listItem>
 
 				</list>

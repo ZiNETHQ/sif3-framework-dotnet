@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="86da71c0-1a81-4182-be5b-79bfd462c1b7" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <autoOutline/>
+      <para>
+        For some background information regarding the branching model used by this project, refer to the article <externalLink>
+          <linkText>A successful Git branching model</linkText>
+          <linkUri>http://nvie.com/posts/a-successful-git-branching-model</linkUri>
+        </externalLink>. The ideas from that article have been combined with the collaborative development techniques recommended by GitHub (specifically <externalLink>
+          <linkText>Using Pull Requests</linkText>
+          <linkUri>https://help.github.com/articles/using-pull-requests</linkUri>
+        </externalLink>) to form these procedures.
+      </para>
+    </introduction>
+
+    <section address="prerequisities">
+      <title>Pre-requisities</title>
+      <content>
+        <list class="bullet">
+          <listItem>
+            <para>
+              <externalLink>
+                <linkText>GIT</linkText>
+                <linkUri>http://git-scm.com/downloads</linkUri>
+              </externalLink> installed.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              A strong understanding of Git. For an introduction, read 
+              <externalLink>
+                <linkText>Getting Started - Git Basics</linkText>
+                <linkUri>http://git-scm.com/book/en/Getting-Started-Git-Basics</linkUri>
+              </externalLink>.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              A GitHub account and Pull access to the appropriate repository for your locale:
+            </para>
+            <list class="bullet">
+              <listItem>
+                <para>
+                  <externalLink>
+                    <linkText>AU (Australia) locale</linkText>
+                    <linkUri>https://github.com/nsip/sif3-framework-dotnet</linkUri>
+                  </externalLink>
+                </para>
+              </listItem>
+              <listItem>
+                <para>
+                  <externalLink>
+                    <linkText>UK (United Kingdom) locale</linkText>
+                    <linkUri>https://github.com/Access4LearningUK/sif3-framework-dotnet</linkUri>
+                  </externalLink>
+                </para>
+              </listItem>
+              <listItem>
+                <para>
+                  <externalLink>
+                    <linkText>NA (North America) locale</linkText>
+                    <linkUri>https://github.com/Access4LearningNA/sif3-framework-dotnet</linkUri>
+                  </externalLink>
+                </para>
+              </listItem>
+            </list>
+          </listItem>
+        </list>
+      </content>
+    </section>
+
+    <relatedTopics>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="fa2862ef-e1e7-4c53-8a2e-37d7733efe4b" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+      <para>
+        Initial commit; Beta release to be used for collaborative review.
+      </para>
+			<para>
+        Released on Jan 28, 2014.
+      </para>
+		</introduction>
+
+		<section>
+			<title>Changes in This Release</title>
+			<content>
+				<list class="bullet">
+					<listItem>
+						<para>Beta release to be used for collaborative review only and not intended for commercial use.</para>
+					</listItem>
+				</list>
+			</content>
+		</section>
+
+		<relatedTopics>
+			<link xlink:href="57ced89f-2db6-4309-8a16-77a8ef3b58c4" />
+		</relatedTopics>
+
+	</developerConceptualDocument>
+</topic>

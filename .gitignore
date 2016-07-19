@@ -114,4 +114,11 @@ UpgradeLog*.XML
 
 # Log files
 *.log
-*.log.[123456789]
+*.log.[0-9]
+*.log.[0-9][0-9]
+UpgradeLog.htm
+UpgradeLog[0-9].htm
+UpgradeLog[0-9][0-9].htm
+
+# NuGet
+nuget.exe

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" 
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -63,16 +64,13 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -225,18 +223,11 @@
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="SifFramework.config">
-      <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config"></None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll">
-      <Link>AutoMapper.Net4.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <EmbeddedResource Include="Persistence\NHibernate\Mapping\SifObjectBinding.hbm.xml" />
     <EmbeddedResource Include="Persistence\NHibernate\Mapping\ApplicationInfo.hbm.xml" />
     <EmbeddedResource Include="Persistence\NHibernate\Mapping\ApplicationRegister.hbm.xml" />
@@ -250,16 +241,16 @@
     <EmbeddedResource Include="Persistence\NHibernate\Mapping\Service.hbm.xml" />
     <EmbeddedResource Include="Persistence\NHibernate\Mapping\Zone.hbm.xml" />
     <EmbeddedResource Include="Persistence\NHibernate\Mapping\PhaseState.hbm.xml" />
-    <EmbeddedResource Include="Persistence\NHibernate\Mapping\Phase.hbm.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Persistence\NHibernate\Mapping\Job.hbm.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\NHibernate\Mapping\Phase.hbm.xml" />
+    <EmbeddedResource Include="Persistence\NHibernate\Mapping\Job.hbm.xml" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="PostBuildMacros">
+  <Import Project="$(ProjectDir)..\packages\MSBuildTasks.1.5.0.196\tools\MSBuild.Community.Tasks.Targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild"></Target>
+  -->
+  <Target Name="AfterBuild">
     <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
       <Output TaskParameter="Assemblies" ItemName="Targets" />
     </GetAssemblyIdentity>
@@ -276,22 +267,12 @@
       <Minor Include="$(Minor)" />
       <Revision Include="$(Revision)" />
       <Build Include="$(Build)" />
-      <SifFrameworkOut Include="$(ProjectDir)..\..\..\SharedLibs\$(TargetName) $(Major).$(Minor).$(Revision)\" />
+      <SifFrameworkOut Include="$(ProjectDir)..\..\..\SharedLibs\$(TargetName) $(Major).$(Minor).$(Revision)" />
     </ItemGroup>
+    <!-- Copy dlls to sharedLibs folder -->
+    <Copy SourceFiles="$(ProjectDir)$(OutDir)$(TargetFileName)" DestinationFolder="@(SifFrameworkOut)" />
+    <!-- Generate NuGet packages -->
+    <WebDownload Condition="!Exists('nuget.exe')" Filename="nuget.exe" FileUri="https://dist.nuget.org/win-x86-commandline/latest/nuget.exe" />
+    <Exec Command="nuget pack $(ProjectFileName) -Symbols -Properties Configuration=$(Configuration);Platform=$(Platform) -OutputDirectory &quot;@(SifFrameworkOut)&quot;" />
   </Target>
-  <PropertyGroup>
-    <PostBuildEventDependsOn>
-    $(PostBuildEventDependsOn);
-    PostBuildMacros;
-  </PostBuildEventDependsOn>
-    <PostBuildEvent>if not exist "@(SifFrameworkOut)" mkdir "@(SifFrameworkOut)"
-copy "$(ProjectDir)$(OutDir)$(TargetFileName)" "@(SifFrameworkOut)$(TargetFileName)" /Y /V</PostBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

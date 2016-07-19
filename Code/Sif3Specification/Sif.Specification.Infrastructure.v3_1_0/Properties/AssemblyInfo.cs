@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Sif.Specification.Infrastructure.v3_1_0")]
 [assembly: AssemblyDescription("SIF 3.0.1 Infrastructure library.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ZiNET Data Solutions Limited")]
+[assembly: AssemblyCompany("Access 4 Learning")]
 [assembly: AssemblyProduct("Sif.Specification.Infrastructure.v3_1_0")]
-[assembly: AssemblyCopyright("Crown Copyright © Department for Education (UK) 2016")]
+[assembly: AssemblyCopyright("Copyright © Access 4 Learning 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

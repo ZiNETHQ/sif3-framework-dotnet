@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Sif.Specification.Infrastructure.v3_0")]
-[assembly: AssemblyDescription("SIF 3.0 Infrastructure library.")]
+[assembly: AssemblyDescription("SIF 3.0 Infrastructure library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Systemic Pty Ltd")]
+[assembly: AssemblyCompany("Access 4 Learning")]
 [assembly: AssemblyProduct("Sif.Specification.Infrastructure.v3_0")]
-[assembly: AssemblyCopyright("Copyright © Systemic Pty Ltd 2014")]
+[assembly: AssemblyCopyright("Copyright © Access 4 Learning 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

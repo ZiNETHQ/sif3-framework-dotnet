@@ -195,6 +195,6 @@
     <Copy SourceFiles="$(ProjectDir)$(OutDir)$(TargetFileName)" DestinationFolder="@(SifFrameworkOut)" />
     <!-- Generate NuGet packages -->
     <WebDownload Condition="!Exists('nuget.exe')" Filename="nuget.exe" FileUri="https://dist.nuget.org/win-x86-commandline/latest/nuget.exe" />
-    <Exec Command="nuget pack $(ProjectFileName) -Symbols -Properties Configuration=$(Configuration);Platform=$(Platform) -OutputDirectory &quot;@(SifFrameworkOut)&quot;" />
+    <Exec Command="nuget pack $(ProjectFileName) -IncludeReferencedProjects -Symbols -Properties Configuration=$(Configuration);Platform=$(Platform) -OutputDirectory &quot;@(SifFrameworkOut)&quot;" />
   </Target>
 </Project>

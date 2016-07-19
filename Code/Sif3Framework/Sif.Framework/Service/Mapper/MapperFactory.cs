@@ -18,6 +18,7 @@ using AutoMapper;
 using Sif.Framework.Model.Infrastructure;
 using Sif.Framework.Model.Requests;
 using Sif.Framework.Model.Responses;
+using Sif.Framework.Utils;
 using Sif.Specification.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -166,7 +167,8 @@ namespace Sif.Framework.Service.Mapper
                 .ForMember(dest => dest.infrastructureServices, opt => opt.MapFrom(src => src.InfrastructureServices.Values))
                 .ForMember(dest => dest.provisionedZones, opt => opt.MapFrom(src => src.ProvisionedZones.Values))
                 .ForMember(dest => dest.typeSpecified, opt => opt.UseValue<bool>(true));
-            AutoMapper.Mapper.CreateMap<environmentType, Environment>();
+            AutoMapper.Mapper.CreateMap<environmentType, Environment>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => StringUtils.IsEmpty(src.id) ? Guid.Empty : Guid.Parse(src.id)));
 
             AutoMapper.Mapper.CreateMap<ProductIdentity, productIdentityType>();
             AutoMapper.Mapper.CreateMap<productIdentityType, ProductIdentity>()
@@ -208,7 +210,7 @@ namespace Sif.Framework.Service.Mapper
                 .ForMember(dest => dest.createdSpecified, opt => opt.MapFrom(src => src.Created != null))
                 .ForMember(dest => dest.lastModifiedSpecified, opt => opt.MapFrom(src => src.LastModified != null));
             AutoMapper.Mapper.CreateMap<stateType, PhaseState>()
-                .ForMember(dest => dest.Id, opt => opt.Ignore());
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => StringUtils.IsEmpty(src.id) ? Guid.Empty : Guid.Parse(src.id)));
             AutoMapper.Mapper.CreateMap<stateType[], IList<PhaseState>>()
                 .ConvertUsing<StatesConverter>();
 
@@ -227,6 +229,7 @@ namespace Sif.Framework.Service.Mapper
                 .ForMember(dest => dest.stateSpecified, opt => opt.MapFrom(src => src.State != null))
                 .ForMember(dest => dest.timeout, opt => opt.MapFrom(src => XmlConvert.ToString(src.Timeout)));
             AutoMapper.Mapper.CreateMap<jobType, Job>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => StringUtils.IsEmpty(src.id) ? Guid.Empty : Guid.Parse(src.id)))
                 .ForMember(dest => dest.Timeout, opt => opt.MapFrom(src => XmlConvert.ToTimeSpan(src.timeout)));
 
             AutoMapper.Mapper.CreateMap<ResponseError, errorType>();

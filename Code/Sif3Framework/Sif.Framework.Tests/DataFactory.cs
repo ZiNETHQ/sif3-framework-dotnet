@@ -58,7 +58,7 @@ namespace Sif.Framework.Model.Infrastructure
                 ApplicationKey = "UnitTesting",
                 ApplicationProduct = applicationProduct,
                 DataModelNamespace = "http://www.sifassociation.org/au/datamodel/1.4",
-                SupportedInfrastructureVersion = "3.0",
+                SupportedInfrastructureVersion = "3.2",
                 Transport = "REST"
             };
             Environment environmentRequest = new Environment
@@ -102,14 +102,14 @@ namespace Sif.Framework.Model.Infrastructure
                 ContextId = "DEFAULT",
                 Name = "StudentPersonals",
                 Rights = rights,
-                Type = "OBJECT"
+                Type = ServiceType.OBJECT
             };
             Infrastructure.Service schoolInfosService = new Infrastructure.Service
             {
                 ContextId = "DEFAULT",
                 Name = "SchoolInfos",
                 Rights = rights,
-                Type = "OBJECT"
+                Type = ServiceType.OBJECT
             };
             ICollection<Infrastructure.Service> services = new SortedSet<Infrastructure.Service>
             {

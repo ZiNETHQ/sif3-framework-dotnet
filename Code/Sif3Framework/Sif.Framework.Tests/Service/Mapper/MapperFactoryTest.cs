@@ -47,7 +47,7 @@ namespace Sif.Framework.Service.Mapper
             Assert.AreEqual(source.AuthenticationMethod, destination.authenticationMethod);
             Assert.AreEqual(source.ConsumerName, destination.consumerName);
             Assert.AreEqual(source.DefaultZone.Description, destination.defaultZone.description);
-            Assert.AreEqual(source.DefaultZone.Id.ToString(), destination.defaultZone.id);
+            Assert.AreEqual(source.DefaultZone.SifId, destination.defaultZone.id);
             Assert.AreEqual(source.InstanceId, destination.instanceId);
             Assert.AreEqual(source.SessionToken, destination.sessionToken);
             Assert.AreEqual(source.SolutionId, destination.solutionId);
@@ -76,7 +76,7 @@ namespace Sif.Framework.Service.Mapper
             Assert.AreEqual(source.AuthenticationMethod, destination.authenticationMethod);
             Assert.AreEqual(source.ConsumerName, destination.consumerName);
             Assert.AreEqual(source.DefaultZone.Description, destination.defaultZone.description);
-            Assert.AreEqual(source.DefaultZone.Id.ToString(), destination.defaultZone.id);
+            Assert.AreEqual(source.DefaultZone.SifId, destination.defaultZone.id);
             Assert.AreEqual(source.Id.ToString(), destination.id);
             int index = 0;
 
@@ -98,13 +98,13 @@ namespace Sif.Framework.Service.Mapper
                 {
                     Assert.AreEqual(sourceService.ContextId, destination.provisionedZones[index].services[sourceIndex].contextId);
                     Assert.AreEqual(sourceService.Name, destination.provisionedZones[index].services[sourceIndex].name);
-                    Assert.AreEqual(sourceService.Type, destination.provisionedZones[index].services[sourceIndex].type);
+                    Assert.AreEqual(sourceService.Type.ToString(), destination.provisionedZones[index].services[sourceIndex].type.ToString());
                     int rightIndex = 0;
 
                     foreach (Right sourceRight in sourceService.Rights.Values)
                     {
-                        Assert.AreEqual(sourceRight.Type, destination.provisionedZones[index].services[sourceIndex].rights[rightIndex].type);
-                        Assert.AreEqual(sourceRight.Value, destination.provisionedZones[index].services[sourceIndex].rights[rightIndex].Value);
+                        Assert.AreEqual(sourceRight.Type, destination.provisionedZones[index].services[sourceIndex].rights[rightIndex].type.ToString());
+                        Assert.AreEqual(sourceRight.Value, destination.provisionedZones[index].services[sourceIndex].rights[rightIndex].Value.ToString());
                         rightIndex++;
                     }
 

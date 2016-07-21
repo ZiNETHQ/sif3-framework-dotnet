@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://github.com/Access4Learning/sif3-framework-dotnet</projectUrl>
+    <iconUrl>https://avatars1.githubusercontent.com/u/11079284</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>See https://github.com/Access4Learning/sif3-framework-dotnet for changes between versions</releaseNotes>
+    <copyright>Copyright Access 4 Learning 2016</copyright>
+    <tags>SIF3 Framework Education</tags>
+  </metadata>
+</package>

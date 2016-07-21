@@ -729,7 +729,7 @@ namespace Sif.Framework.Providers
         private IDictionary<string, Right> getRights(string serviceName, ProvisionedZone zone)
         {
             Model.Infrastructure.Service service = (from Model.Infrastructure.Service s in zone.Services
-                                                    where s.Type.Equals(ServiceType.FUNCTIONAL.ToString())
+                                                    where s.Type.Equals(ServiceType.FUNCTIONAL)
                                                        && s.Name.Equals(serviceName)
                                                     select s).FirstOrDefault();
 

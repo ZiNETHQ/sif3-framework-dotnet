@@ -42,7 +42,7 @@ namespace Sif.Framework.Utils
             Assert.IsNull(settings.InstanceId);
             Assert.AreEqual(settings.SharedSecret, "SecretDem0");
             Assert.IsNull(settings.SolutionId);
-            Assert.AreEqual(settings.SupportedInfrastructureVersion, "3.0.1");
+            Assert.AreEqual(settings.SupportedInfrastructureVersion, "3.2");
             Assert.IsNull(settings.UserToken);
         }
 

@@ -10,7 +10,6 @@ set NUGET=nuget.exe
 set SPEC=..\..\..\Code\Sif3Specification\Sif3Specification.sln
 set FRAMEWORK=..\..\..\Code\Sif3Framework\Sif3Framework.sln
 set DEMOS=..\..\..\Code\Sif3FrameworkDemo\Sif3FrameworkDemo.sln
-set DOCS=..\..\..\Code\Sif3Documentation\Sif3Documentation.sln
 
 set OUTPUT=output
 
@@ -56,12 +55,6 @@ pause
 goto end
 :okDEMOS
 
-if exist %DOCS% goto okDOCS
-echo Could not find : %DOCS%
-pause
-goto end
-:okDOCS
-
 if exist %OUTPUT% goto okOUTPUT
 echo Creating folder : %OUTPUT%
 mkdir %OUTPUT%
@@ -102,14 +95,5 @@ echo ---
 %MSBUILD% %DEMOS% /nologo /t:Rebuild /p:Configuration=Debug /p:Platform="Any CPU" /v:%VERBOSITY% > %OUTPUT%\build.demos.log
 echo.
 
-:buildDOCS
-echo.
-choice /c yn /m "Do you want to build the framework's DOCUMENTATION? [Y] Yes or [N] no.   "
-if errorlevel 2 goto end
-echo.
-echo Rebuilding Demo projects
-echo ---
-%NUGET% restore %DOCS%
-%MSBUILD% %DOCS% /nologo /t:Rebuild /p:Configuration=Debug /p:Platform="Any CPU" /v:%VERBOSITY% > %OUTPUT%\build.docs.log
 pause
 :end

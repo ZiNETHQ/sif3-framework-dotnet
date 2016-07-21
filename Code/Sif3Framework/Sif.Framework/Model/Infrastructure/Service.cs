@@ -41,7 +41,7 @@ namespace Sif.Framework.Model.Infrastructure
 
         public virtual IDictionary<string, Right> Rights { get; set; }
 
-        public virtual string Type { get; set; }
+        public virtual ServiceType Type { get; set; }
 
         public virtual int CompareTo(Service service)
         {

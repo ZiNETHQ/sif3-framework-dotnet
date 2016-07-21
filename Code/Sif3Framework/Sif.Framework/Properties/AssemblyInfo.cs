@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Sif.Framework")]
-[assembly: AssemblyDescription("Core library of the SIF 3 Framework.")]
+[assembly: AssemblyDescription("Core library of the SIF3 Framework (.NET)")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Systemic Pty Ltd")]
+[assembly: AssemblyCompany("Access 4 Learning")]
 [assembly: AssemblyProduct("Sif.Framework")]
-[assembly: AssemblyCopyright("Copyright © Systemic Pty Ltd 2016")]
+[assembly: AssemblyCopyright("Copyright © Access 4 Learning 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0"?>
 <environment xmlns="http://www.sifassociation.org/infrastructure/3.2" type="DIRECT">
-  <defaultZone id="defaultZone">
-    <description>SIF3 demo consumer default zone</description>
+  <!-- https://www.compare-school-performance.service.gov.uk/schools-by-type?step=la&la=845 -->
+  <defaultZone id="zone_845">
+    <description>East Sussex LA</description>
   </defaultZone>
   <infrastructureServices>
     <infrastructureService name="environment">http://sif.demo.domain:62921/api/environments</infrastructureService>
@@ -12,19 +13,8 @@
     <infrastructureService name="subscriptions">http://sif.demo.domain:62921/api/subscriptions</infrastructureService>
   </infrastructureServices>
   <provisionedZones>
-    <provisionedZone id="defaultZone">
+    <provisionedZone id="zone_845">
       <services>
-        <service name="LearnerPersonals" contextId="DEFAULT" type="OBJECT">
-          <rights>
-            <right type="QUERY">APPROVED</right>
-            <right type="CREATE">REJECTED</right>
-            <right type="UPDATE">REJECTED</right>
-            <right type="DELETE">REJECTED</right>
-            <right type="PROVIDE">REJECTED</right>
-            <right type="SUBSCRIBE">SUPPORTED</right>
-            <right type="ADMIN">REJECTED</right>
-          </rights>
-        </service>
         <service name="Payloads" contextId="DEFAULT" type="FUNCTIONAL">
           <rights>
             <right type="QUERY">APPROVED</right>

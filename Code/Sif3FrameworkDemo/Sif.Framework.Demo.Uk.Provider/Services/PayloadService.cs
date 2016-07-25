@@ -47,7 +47,7 @@ namespace Sif.Framework.Demo.Uk.Provider.Services
 
             job.AddPhase(new Phase("json", true, RightsUtils.getRights(update: RightValue.APPROVED), RightsUtils.getRights(create: RightValue.APPROVED), PhaseStateType.NOTSTARTED));
 
-            job.Timeout = new TimeSpan(0, 1, 0);
+            job.Timeout = new TimeSpan(0, 2, 0);
         }
 
         protected override void JobShutdown(Job job)

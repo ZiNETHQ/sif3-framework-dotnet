@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <environment xmlns="http://www.sifassociation.org/infrastructure/3.2" type="DIRECT">
-  <defaultZone id="defaultZone">
-    <description>SIF3 demo consumer default zone</description>
+  <defaultZone id="zone_dfe">
+    <description>DfE</description>
   </defaultZone>
   <infrastructureServices>
     <infrastructureService name="environment">http://sif.demo.domain:62921/api/environments</infrastructureService>
@@ -12,19 +12,8 @@
     <infrastructureService name="subscriptions">http://sif.demo.domain:62921/api/subscriptions</infrastructureService>
   </infrastructureServices>
   <provisionedZones>
-    <provisionedZone id="defaultZone">
+    <provisionedZone id="zone_dfe">
       <services>
-        <service name="LearnerPersonals" contextId="DEFAULT" type="OBJECT">
-          <rights>
-            <right type="QUERY">APPROVED</right>
-            <right type="CREATE">REJECTED</right>
-            <right type="UPDATE">REJECTED</right>
-            <right type="DELETE">REJECTED</right>
-            <right type="PROVIDE">REJECTED</right>
-            <right type="SUBSCRIBE">SUPPORTED</right>
-            <right type="ADMIN">REJECTED</right>
-          </rights>
-        </service>
         <service name="Payloads" contextId="DEFAULT" type="FUNCTIONAL">
           <rights>
             <right type="QUERY">APPROVED</right>
@@ -33,7 +22,7 @@
             <right type="DELETE">APPROVED</right>
             <right type="PROVIDE">REJECTED</right>
             <right type="SUBSCRIBE">SUPPORTED</right>
-            <right type="ADMIN">REJECTED</right>
+            <right type="ADMIN">APPROVED</right>
           </rights>
         </service>
       </services>

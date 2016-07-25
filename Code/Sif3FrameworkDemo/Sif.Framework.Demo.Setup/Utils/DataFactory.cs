@@ -36,6 +36,37 @@ namespace Sif.Framework.Demo.Setup.Utils
         /// 
         /// </summary>
         /// <returns></returns>
+        public static ICollection<SifAppAdmin> CreateAppAdminRecords(string locale)
+        {
+            IList<SifAppAdmin> records = new List<SifAppAdmin>();
+
+            string path = "Data files\\" + locale.ToUpper() + "\\AppAdmin.csv";
+
+            var reader = new StreamReader(File.OpenRead(@path));
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+
+                if(line.StartsWith("#"))
+                {
+                    continue;
+                }
+
+                var values = line.Split(',');
+
+                records.Add(new SifAppAdmin() {
+                    AdminApplicationKey = values[0],
+                    ApplicationKey = values[1]
+                });
+            }
+
+            return records;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static ICollection<ApplicationRegister> CreateApplicationRegisters(string locale)
         {
             IList<ApplicationRegister> registers = new List<ApplicationRegister>();

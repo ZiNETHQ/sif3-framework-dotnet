@@ -64,6 +64,12 @@ namespace Sif.Framework.Demo.Setup
                     ICollection<ApplicationRegister> applicationRegisters = DataFactory.CreateApplicationRegisters(locale);
                     ApplicationRegisterRepository applicationRegisterRepository = new ApplicationRegisterRepository();
                     applicationRegisterRepository.Save(applicationRegisters);
+
+                    ICollection<SifAppAdmin> appAdminRecords = DataFactory.CreateAppAdminRecords(locale);
+                    AppAdminRepository appAdminRepository = new AppAdminRepository();
+                    appAdminRepository.Save(appAdminRecords);
+                    
+
                 }
 
             }

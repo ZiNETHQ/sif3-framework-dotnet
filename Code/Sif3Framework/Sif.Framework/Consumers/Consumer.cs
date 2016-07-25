@@ -102,11 +102,8 @@ namespace Sif.Framework.Consumers
         /// <param name="instanceId">Instance ID.</param>
         /// <param name="userToken">User token.</param>
         /// <param name="solutionId">Solution ID.</param>
-        public Consumer(string applicationKey, string instanceId = null, string userToken = null, string solutionId = null)
+        public Consumer(string applicationKey = null, string instanceId = null, string userToken = null, string solutionId = null): this(new Environment(applicationKey, instanceId, userToken, solutionId))
         {
-            Environment environment = new Environment(applicationKey, instanceId, userToken, solutionId);
-            environmentTemplate = EnvironmentUtils.MergeWithSettings(environment, SettingsManager.ConsumerSettings);
-            registrationService = new RegistrationService(SettingsManager.ConsumerSettings, SessionsManager.ConsumerSessionService);
         }
 
         /// <summary>

@@ -43,7 +43,7 @@ namespace Sif.Framework.Consumers
         /// <summary>
         /// <see cref="Consumer{TSingle,TMultiple,TPrimaryKey}.Consumer(string, string, string, string)">Consumer</see>
         /// </summary>
-        public BasicConsumer(string applicationKey, string instanceId = null, string userToken = null, string solutionId = null)
+        public BasicConsumer(string applicationKey = null, string instanceId = null, string userToken = null, string solutionId = null)
             : base(applicationKey, instanceId, userToken, solutionId)
         {
         }

@@ -24,7 +24,7 @@ namespace Sif.Framework.Demo.Us.Consumer
     class XStudentConsumer : BasicConsumer<XStudent>
     {
 
-        public XStudentConsumer(string applicationKey, string instanceId = null, string userToken = null, string solutionId = null)
+        public XStudentConsumer(string applicationKey = null, string instanceId = null, string userToken = null, string solutionId = null)
             : base(applicationKey, instanceId, userToken, solutionId)
         {
         }

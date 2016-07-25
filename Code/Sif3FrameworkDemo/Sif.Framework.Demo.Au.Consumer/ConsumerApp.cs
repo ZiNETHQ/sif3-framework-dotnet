@@ -169,7 +169,7 @@ namespace Sif.Framework.Demo.Au.Consumer
 
         void RunStudentPersonalConsumer()
         {
-            StudentPersonalConsumer studentPersonalConsumer = new StudentPersonalConsumer("Sif3DemoApp");
+            StudentPersonalConsumer studentPersonalConsumer = new StudentPersonalConsumer();
             studentPersonalConsumer.Register();
             if (log.IsInfoEnabled) log.Info("Registered the Consumer.");
 

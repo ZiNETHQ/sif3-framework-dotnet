@@ -33,6 +33,7 @@ using System.Reflection;
 using System.Text;
 using System.Web.Http;
 using System.Linq;
+using Sif.Framework.Persistence.NHibernate;
 
 namespace Sif.Framework.Providers
 {
@@ -793,7 +794,15 @@ namespace Sif.Framework.Providers
             {
                 case EnvironmentType.DIRECT:
                     // Application key is either in header or in session token
-                    ownerId = HttpUtils.GetApplicationKey(Request.Headers) ?? sessionToken;
+
+                    Environment environment = new EnvironmentRepository().RetrieveBySessionToken(sessionToken);
+
+                    if (environment == null)
+                    {
+                        throw new InvalidSessionException();
+                    }
+                    
+                    ownerId = HttpUtils.GetApplicationKey(Request.Headers) ?? environment.ApplicationInfo.ApplicationKey;
                     break;
                 case EnvironmentType.BROKERED:
                     // Application key must have been moved into sourceName property

@@ -24,7 +24,7 @@ namespace Sif.Framework.Demo.Uk.Consumer.Consumers
     class LearnerPersonalConsumer : BasicConsumer<LearnerPersonal>
     {
 
-        public LearnerPersonalConsumer(string applicationKey, string instanceId = null, string userToken = null, string solutionId = null)
+        public LearnerPersonalConsumer(string applicationKey = null, string instanceId = null, string userToken = null, string solutionId = null)
             : base(applicationKey, instanceId, userToken, solutionId)
         {
         }

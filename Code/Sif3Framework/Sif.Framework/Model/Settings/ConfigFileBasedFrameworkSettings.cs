@@ -383,5 +383,13 @@ namespace Sif.Framework.Model.Settings
         {
             get { return GetIntegerSetting(SettingsPrefix + ".job.timeout.frequency", 60); }
         }
+
+        /// <summary>
+        /// True if bound objects can be accessed by the owner's administrators, false otherwise. Default true.
+        /// </summary>
+        public bool JobBindingAdmin
+        {
+            get { return GetBooleanSetting(SettingsPrefix + ".job.binding.admin", true); }
+        }
     }
 }

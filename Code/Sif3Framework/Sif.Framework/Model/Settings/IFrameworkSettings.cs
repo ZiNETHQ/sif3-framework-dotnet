@@ -119,5 +119,10 @@ namespace Sif.Framework.Model.Settings
         /// How often to check for timedout jobs in seconds. Default 60.
         /// </summary>
         int JobTimeoutFrequency { get; }
+
+        /// <summary>
+        /// True if bound objects can be accessed by the owner's administrators, false otherwise. Default true.
+        /// </summary>
+        bool JobBindingAdmin { get; }
     }
 }

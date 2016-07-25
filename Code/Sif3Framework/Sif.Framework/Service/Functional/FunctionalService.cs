@@ -35,7 +35,8 @@ namespace Sif.Framework.Service.Functional
     public abstract class FunctionalService : SifService<jobType, Job>, IFunctionalService
     {
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        private GenericRepository<SifObjectBinding, long> bindings;
+        private BindingRepository bindings;
+        private AppAdminRepository appAdmins;
 
         /// <summary>
         /// The disctionary of phases this service contains, with the actions each can perform
@@ -48,7 +49,8 @@ namespace Sif.Framework.Service.Functional
         public FunctionalService() : base(new GenericRepository<Job, Guid>(EnvironmentProviderSessionFactory.Instance))
         {
             phaseActions = new Dictionary<string, IPhaseActions>();
-            bindings = new GenericRepository<SifObjectBinding, long>(EnvironmentProviderSessionFactory.Instance);
+            bindings = new BindingRepository();
+            appAdmins = new AppAdminRepository();
         }
 
         /// <summary>
@@ -88,7 +90,7 @@ namespace Sif.Framework.Service.Functional
                 OwnerId = ownerId,
                 RefId = objectId
             });
-            log.Info("Bound object " + objectId + " with session token " + ownerId + ". ID = " + id);
+            log.Info("Bound object " + objectId + " to owner " + ownerId + ". binding ID = " + id);
         }
 
         /// <summary>
@@ -116,44 +118,39 @@ namespace Sif.Framework.Service.Functional
         }
 
         /// <summary>
-        /// <see cref="IFunctionalService.GetBinding(Guid)"/>
-        /// </summary>
-        public virtual string GetBinding(Guid objectId)
-        {
-            ICollection<SifObjectBinding> candidates = bindings.Retrieve(new SifObjectBinding()
-            {
-                RefId = objectId
-            });
-            if (candidates == null || candidates.Count == 0)
-            {
-                log.Debug("Could not find any bindings for the object " + objectId + ".");
-                return null;
-            }
-            string sessionToken = candidates.FirstOrDefault().OwnerId;
-            log.Info("Binding for object " + objectId + " is session token " + sessionToken + ".");
-            return sessionToken;
-        }
-
-        /// <summary>
         /// <see cref="IFunctionalService.IsBound(Guid, string)"/>
         /// </summary>
-        public virtual Boolean IsBound(Guid objectId, string ownerId)
+        public virtual Boolean IsBound(Guid objectId, string candidateOwnerId)
         {
-            ICollection<SifObjectBinding> candidates = bindings.Retrieve(new SifObjectBinding()
+            try
             {
-                OwnerId = ownerId,
-                RefId = objectId
-            });
-            Boolean bound = candidates != null && candidates.Count > 0;
-            if (bound)
-            {
-                log.Info("Found binding for object " + objectId + " with session token " + ownerId + ".");
+                string ownerId = bindings.RetrieveOwnerId(objectId);
+                if (ownerId.Equals(candidateOwnerId))
+                {
+                    log.Info("Found binding for object " + objectId + " with owner " + candidateOwnerId + ".");
+                    return true;
+                }
+
+                if (SettingsManager.ProviderSettings.JobBindingAdmin)
+                {
+                    ICollection<string> admins = appAdmins.RetrieveAdminKeys(ownerId);
+                    log.Info("Found " + admins.Count + " admins: " + string.Join(",", admins.ToArray()));
+
+                    if (admins.Contains(candidateOwnerId))
+                    {
+                        log.Info("Found binding for object " + objectId + " to owner " + ownerId + " (authorised app " + candidateOwnerId + ").");
+                        return true;
+                    }
+                }
+
+                log.Debug("Cound not find binding for object " + objectId + " to owner " + candidateOwnerId + ".");
+                return false;
             }
-            else
+            catch (Exception e)
             {
-                log.Debug("Cound not find binding for object " + objectId + " with session token " + ownerId + ".");
+                log.Warn(e.Message, e);
+                return false;
             }
-            return bound;
         }
 
         /// <see cref="ISifService{UI, DB}.Create(UI, string, string)"/>
@@ -439,7 +436,8 @@ namespace Sif.Framework.Service.Functional
             if (jobs.Count == 0)
             {
                 log.Info("No jobs have timed out.");
-            } else
+            }
+            else
             {
                 int count = 0;
 

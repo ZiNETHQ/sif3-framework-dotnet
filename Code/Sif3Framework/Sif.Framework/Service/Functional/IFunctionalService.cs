@@ -108,7 +108,7 @@ namespace Sif.Framework.Service.Functional
         /// <summary>
         /// Binds a (job) object's refid to a session token
         /// </summary>
-        /// <param name="ownerId">The session token the (job) object was created in</param>
+        /// <param name="ownerId">The id of the owner of the (job) object</param>
         /// <param name="objectId">The refid of the created object</param>
         void Bind(Guid objectId, string ownerId);
 
@@ -125,18 +125,11 @@ namespace Sif.Framework.Service.Functional
         void Unbind(Guid objectId);
 
         /// <summary>
-        /// Checks if the given (job) object id is bound, and if it is returns the session token.
-        /// </summary>
-        /// <param name="objectId">The refid of the object</param>
-        /// <returns>The session token this object id is bound to, null if not found</returns>
-        string GetBinding(Guid objectId);
-
-        /// <summary>
         /// Returns true if the (job) object refid is associated with the session token.
         /// </summary>
-        /// <param name="ownerId">The session token to look for</param>
+        /// <param name="candidateOwnerId">The owner id to check against the object id</param>
         /// <param name="objectId">The refid of the (job) object to look for</param>
         /// <returns>See summary</returns>
-        Boolean IsBound(Guid objectId, string ownerId);
+        Boolean IsBound(Guid objectId, string candidateOwnerId);
     }
 }

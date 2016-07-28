@@ -18,6 +18,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sif.Framework.Model.Settings;
 using Sif.Framework.Service.Sessions;
 using System;
+using static Sif.Framework.Utils.AuthenticationUtils;
 
 namespace Sif.Framework.Utils
 {

@@ -23,7 +23,7 @@ namespace Sif.Framework.Utils
 
     public static class AuthenticationUtils
     {
-        enum AuthorisationMethod { Basic, HMACSHA256 };
+        public enum AuthorisationMethod { Basic, HMACSHA256 };
 
         public delegate string GetSharedSecret(string sessionToken);
 
@@ -45,20 +45,25 @@ namespace Sif.Framework.Utils
 
         public static bool VerifyBasicAuthorisationToken(string authorisationToken, GetSharedSecret getSharedSecret, out string sessionToken)
         {
+            string sharedSecret = null;
+            sessionToken = null;
+
+            getBasicAuthorisationTokens(authorisationToken, out sessionToken, out sharedSecret);
+
+            return sharedSecret.Equals(getSharedSecret(sessionToken));
+        }
+
+        public static void getBasicAuthorisationTokens(string authorisationToken, out string sessionToken, out string sharedSecret)
+        {
 
             if (String.IsNullOrWhiteSpace(authorisationToken))
             {
                 throw new ArgumentNullException("authorisationToken");
             }
-
-            if (getSharedSecret == null)
-            {
-                throw new ArgumentNullException("getSharedSecret");
-            }
-
+            
             string[] tokens = authorisationToken.Split(' ');
 
-            if (tokens.Length != 2 || !AuthorisationMethod.Basic.ToString().Equals(tokens[0]) || String.IsNullOrWhiteSpace(tokens[1]))
+            if (tokens.Length != 2 || !AuthorisationMethod.Basic.ToString().Equals(tokens[0], StringComparison.InvariantCultureIgnoreCase) || String.IsNullOrWhiteSpace(tokens[1]))
             {
                 throw new ArgumentException("Authorisation token not recognised.", "authorisationToken");
             }
@@ -72,10 +77,8 @@ namespace Sif.Framework.Utils
                 throw new ArgumentException("Invalid authorisation token.", "authorisationToken");
             }
 
-            string sharedSecret = nextTokens[1];
+            sharedSecret = nextTokens[1];
             sessionToken = nextTokens[0];
-
-            return sharedSecret.Equals(getSharedSecret(sessionToken));
         }
 
         public static string GenerateHMACSHA256AuthorisationToken(string sessionToken, string sharedSecret, out string dateString)

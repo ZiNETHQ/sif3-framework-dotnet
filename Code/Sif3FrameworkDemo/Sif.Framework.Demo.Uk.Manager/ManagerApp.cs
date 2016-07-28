@@ -47,7 +47,7 @@ namespace Sif.Framework.Demo.Uk.Consumer
                 }
 
                 // Admin interface, e.g.
-                // /services/{job name}/admin/owns/{job id} returns owner id
+                // /services/{job name(s)}/admin/owns/{job id} returns owner id
             }
             catch (Exception e)
             {

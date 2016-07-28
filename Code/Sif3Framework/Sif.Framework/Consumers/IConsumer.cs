@@ -18,6 +18,7 @@ using Sif.Framework.Model.DataModels;
 using Sif.Framework.Model.Query;
 using Sif.Framework.Model.Responses;
 using System.Collections.Generic;
+using Environment = Sif.Framework.Model.Infrastructure.Environment;
 
 namespace Sif.Framework.Consumers
 {
@@ -36,7 +37,8 @@ namespace Sif.Framework.Consumers
         /// <summary>
         /// This method must be called before any other.
         /// </summary>
-        void Register();
+        /// <returns>The environment that the consumer has registered to.</returns>
+        Environment Register();
 
         /// <summary>
         /// This method should be called on completion.

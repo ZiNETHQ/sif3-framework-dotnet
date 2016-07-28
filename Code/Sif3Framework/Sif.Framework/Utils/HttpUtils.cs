@@ -15,8 +15,12 @@
  */
 
 using Sif.Framework.Extensions;
+using Sif.Framework.Model.Exceptions;
+using Sif.Framework.Model.Infrastructure;
+using Sif.Framework.Persistence.NHibernate;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -24,6 +28,9 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Web;
+using static Sif.Framework.Utils.AuthenticationUtils;
+using Environment = Sif.Framework.Model.Infrastructure.Environment;
 
 namespace Sif.Framework.Utils
 {
@@ -46,7 +53,8 @@ namespace Sif.Framework.Utils
             navigationPage,
             navigationPageSize,
             applicationKey,
-            sourceName
+            sourceName,
+            authorization
         }
 
         /// <summary>
@@ -479,6 +487,27 @@ namespace Sif.Framework.Utils
         }
 
         /// <summary>
+        /// Retrieve the authorization property from the header.
+        /// </summary>
+        /// <param name="headers">Request headers.</param>
+        /// <returns>Authorization header value if set; null otherwise.</returns>
+        internal static string GetAuthorization(HttpHeaders headers)
+        {
+            return GetHeaderValue(headers, RequestHeader.authorization.ToDescription());
+        }
+
+        /// <summary>
+        /// Retrieve the authorization property from the header.
+        /// </summary>
+        /// <returns>Authorization header value if set; null otherwise.</returns>
+        internal static string GetAuthorization()
+        {
+            HttpContext httpContext = HttpContext.Current;
+            NameValueCollection headers = httpContext?.Request.Headers;
+            return headers == null ? null : headers.Get(RequestHeader.authorization.ToDescription());
+        }
+
+        /// <summary>
         /// Retrieve the applicationKey property from the header.
         /// </summary>
         /// <param name="headers">Request headers.</param>
@@ -489,6 +518,17 @@ namespace Sif.Framework.Utils
         }
 
         /// <summary>
+        /// Retrieve the applicationKey property from the header.
+        /// </summary>
+        /// <returns>applicationKey value if set; null otherwise.</returns>
+        internal static string GetApplicationKey()
+        {
+            HttpContext httpContext = HttpContext.Current;
+            NameValueCollection headers = httpContext?.Request.Headers;
+            return headers == null ? null : headers.Get(RequestHeader.applicationKey.ToDescription());
+        }
+
+        /// <summary>
         /// Retrieve the sourceName property from the header.
         /// </summary>
         /// <param name="headers">Request headers.</param>
@@ -496,6 +536,17 @@ namespace Sif.Framework.Utils
         internal static string GetSourceName(HttpHeaders headers)
         {
             return GetHeaderValue(headers, RequestHeader.sourceName.ToDescription());
+        }
+
+        /// <summary>
+        /// Retrieve the sourceName property from the header.
+        /// </summary>
+        /// <returns>sourceName value if set; null otherwise.</returns>
+        internal static string GetSourceName()
+        {
+            HttpContext httpContext = HttpContext.Current;
+            NameValueCollection headers = httpContext?.Request.Headers;
+            return headers == null ? null : headers.Get(RequestHeader.sourceName.ToDescription());
         }
 
         /// <summary>
@@ -542,6 +593,55 @@ namespace Sif.Framework.Utils
             }
 
             return matrixParameters;
+        }
+
+        public static String getRequestOrigin()
+        {
+            // if authorization method is basic, exception otherwise
+            string sessionToken = null;
+            string sharedSecret = null;
+            if (AuthorisationMethod.Basic.ToDescription().Equals(SettingsManager.ProviderSettings.AuthenticationMethod))
+            {
+                AuthenticationUtils.getBasicAuthorisationTokens(HttpUtils.GetAuthorization(), out sessionToken, out sharedSecret);
+            }
+            else
+            {
+                throw new RejectedException("Only BASIC authentication is currently supported, but authorization is set as: " + SettingsManager.ProviderSettings.AuthenticationMethod);
+            }
+
+
+            if (sessionToken == null)
+            {
+                throw new InvalidSessionException();
+            }
+
+            String source = null;
+
+            switch (SettingsManager.ProviderSettings.EnvironmentType)
+            {
+                case EnvironmentType.DIRECT:
+                    // Application key is either in header or in session token
+
+                    Environment environment = new EnvironmentRepository().RetrieveBySessionToken(sessionToken);
+
+                    if (environment == null)
+                    {
+                        throw new InvalidSessionException();
+                    }
+
+                    source = HttpUtils.GetApplicationKey() ?? environment.ApplicationInfo.ApplicationKey;
+                    break;
+                case EnvironmentType.BROKERED:
+                    // Application key must have been moved into sourceName property
+                    source = HttpUtils.GetSourceName();
+                    break;
+            }
+
+            if (source == null)
+            {
+                throw new NotFoundException("Could not identify consumer.");
+            }
+            return source;
         }
     }
 }

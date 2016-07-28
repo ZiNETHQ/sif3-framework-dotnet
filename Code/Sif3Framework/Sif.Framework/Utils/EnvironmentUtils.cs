@@ -199,6 +199,11 @@ namespace Sif.Framework.Utils
             return null;
         }
 
+        public static Environment GetCurrentEnvironment()
+        {
+            return null;
+        }
+
     }
 
 }

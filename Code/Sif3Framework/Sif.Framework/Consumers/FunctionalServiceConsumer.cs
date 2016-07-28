@@ -144,9 +144,9 @@ namespace Sif.Framework.Consumers
         /// <summary>
         /// Register this Consumer.
         /// </summary>
-        public void Register()
+        public Environment Register()
         {
-            registrationService.Register(ref environmentTemplate);
+            return registrationService.Register(ref environmentTemplate);
         }
 
         /// <summary>

@@ -15,6 +15,7 @@
  */
 
 using Sif.Framework.Model.Infrastructure;
+using static Sif.Framework.Utils.AuthenticationUtils;
 
 namespace Sif.Framework.Model.Settings
 {
@@ -31,7 +32,7 @@ namespace Sif.Framework.Model.Settings
         string ApplicationKey { get; }
 
         /// <summary>
-        /// Authentication method if it exists; null otherwise.
+        /// Authentication method if it exists; BASIC otherwise.
         /// </summary>
         string AuthenticationMethod { get; }
 

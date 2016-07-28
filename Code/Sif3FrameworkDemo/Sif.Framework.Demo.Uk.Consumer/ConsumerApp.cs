@@ -30,6 +30,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Environment = Sif.Framework.Model.Infrastructure.Environment;
 
 namespace Sif.Framework.Demo.Uk.Consumer
 {
@@ -87,20 +88,21 @@ namespace Sif.Framework.Demo.Uk.Consumer
 
         private static IList<Guid> ProcessCreates(MultipleCreateResponse creates)
         {
-            if(creates == null)
+            if (creates == null)
             {
                 throw new ArgumentNullException("creates");
             }
 
             List<Guid> ids = new List<Guid>();
 
-            foreach(CreateStatus s in creates.StatusRecords)
+            foreach (CreateStatus s in creates.StatusRecords)
             {
-                if(s.StatusCode.StartsWith("2"))
+                if (s.StatusCode.StartsWith("2"))
                 {
                     log.Info("Created a job with id " + s.Id + " (" + s.StatusCode + ").");
                     ids.Add(Guid.Parse(s.Id));
-                } else
+                }
+                else
                 {
                     log.Info("Failed to create a job with id " + s.Id + " (" + s.StatusCode + "/" + s.Error.Code + ").\nDescription: " + s.Error.Description + "\nMessage: " + s.Error.Message);
                 }
@@ -139,7 +141,8 @@ namespace Sif.Framework.Demo.Uk.Consumer
             {
                 // Retrieve Bart Simpson using QBE.
                 if (log.IsInfoEnabled) log.Info("*** Retrieve Bart Simpson using QBE.");
-                LearnerPersonal exampleLearner = new LearnerPersonal {
+                LearnerPersonal exampleLearner = new LearnerPersonal
+                {
                     PersonalInformation = new PersonalInformationType
                     {
                         Name = new NameType
@@ -276,8 +279,9 @@ namespace Sif.Framework.Demo.Uk.Consumer
         void RunPayloadConsumer()
         {
             FunctionalServiceConsumer consumer = new FunctionalServiceConsumer();
-            consumer.Register();
-            if (log.IsInfoEnabled) log.Info("Registered the Consumer.");
+            Environment environment = consumer.Register();
+
+            if (log.IsInfoEnabled) log.Info("Registered the Consumer with session token: " + environment.SessionToken);
 
             try
             {
@@ -335,9 +339,11 @@ namespace Sif.Framework.Demo.Uk.Consumer
 
                 // Execute DELETE to phase "default".
                 if (log.IsInfoEnabled) log.Info("*** Executing DELETE to phase 'default'.");
-                try {
+                try
+                {
                     consumer.DeleteToPhase(job, "default", "Sending DELETE", contentTypeOverride: "text/plain", acceptOverride: "text/plain");
-                } catch (Exception e)
+                }
+                catch (Exception e)
                 {
                     if (log.IsInfoEnabled) log.Info("EXPECTED exception due to access rights: " + e.Message);
                 }
@@ -348,7 +354,8 @@ namespace Sif.Framework.Demo.Uk.Consumer
                 try
                 {
                     xml = SerialiserFactory.GetXmlSerialiser<LearnerPersonal>().Serialise(CreateBruceWayne());
-                } catch (Exception e)
+                }
+                catch (Exception e)
                 {
                     if (log.IsFatalEnabled) log.Info("***** Error serializing to xml: " + e.Message, e);
                 }
@@ -360,7 +367,8 @@ namespace Sif.Framework.Demo.Uk.Consumer
                 try
                 {
                     json = JsonConvert.SerializeObject(CreateBruceWayne());
-                } catch (Exception e)
+                }
+                catch (Exception e)
                 {
                     if (log.IsFatalEnabled) log.Info("***** Error serializing to json: " + e.Message, e);
                 }
@@ -395,7 +403,8 @@ namespace Sif.Framework.Demo.Uk.Consumer
                 // Delete the job.
                 if (log.IsInfoEnabled) log.Info("*** Delete a job.");
                 consumer.Delete(job);
-                try {
+                try
+                {
                     Job deleted = consumer.Query(job);
 
                     if (log.IsInfoEnabled) log.Info("Shouldn't get here, provider should have caused an expection. Retrieving job with " + job.Id + " returned " + (job == null ? "null value" : "job object with ID " + deleted.Id) + ".");
@@ -409,7 +418,7 @@ namespace Sif.Framework.Demo.Uk.Consumer
                 /* Check multiple job creation and deletion */
                 /*------------------------------------------*/
                 List<Job> jobs = new List<Job>();
-                for(int i = 0; i < 5; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     jobs.Add(new Job("Payload"));
                 }
@@ -417,7 +426,7 @@ namespace Sif.Framework.Demo.Uk.Consumer
 
                 IList<Guid> ids = ProcessCreates(creates);
                 jobs.Clear();
-                foreach(Guid id in ids)
+                foreach (Guid id in ids)
                 {
                     jobs.Add(new Job("Payload") { Id = id });
                 }

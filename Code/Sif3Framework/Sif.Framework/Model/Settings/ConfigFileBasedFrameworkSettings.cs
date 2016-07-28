@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Reflection;
+using static Sif.Framework.Utils.AuthenticationUtils;
 
 namespace Sif.Framework.Model.Settings
 {
@@ -161,15 +162,44 @@ namespace Sif.Framework.Model.Settings
         /// <summary>
         /// <see cref="Sif.Framework.Model.Settings.IFrameworkSettings.AuthenticationMethod"/>
         /// </summary>
+
         public string AuthenticationMethod
         {
-
             get
             {
                 return GetStringSetting(SettingsPrefix + ".environment.template.authenticationMethod");
             }
-
         }
+        /*
+        public AuthorisationMethod AuthenticationMethod
+        {
+            get
+            {
+                string setting = GetStringSetting(SettingsPrefix + ".environment.template.authenticationMethod");
+
+                if(StringUtils.IsEmpty(setting))
+                {
+                    if (log.IsWarnEnabled) { log.Warn("No authentication method specified, assuming BASIC."); }
+                    return AuthorisationMethod.Basic;
+                }
+
+                if (setting != null)
+                {
+                    foreach (AuthorisationMethod method in Enum.GetValues(typeof(AuthorisationMethod)))
+                    {
+                        if (setting.Equals(method.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            if (log.IsInfoEnabled) { log.Info("Authentication method is " + method + "."); };
+                            return method;
+                        }
+                    }
+                }
+
+                if (log.IsErrorEnabled) { log.Error("Authentication specified as " + setting + ", but this is not supported, assuming BASIC."); }
+                return AuthorisationMethod.Basic;
+            }
+        }
+        */
 
         /// <summary>
         /// <see cref="Sif.Framework.Model.Settings.IFrameworkSettings.ConsumerName"/>

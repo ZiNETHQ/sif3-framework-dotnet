@@ -165,9 +165,9 @@ namespace Sif.Framework.Consumers
         /// <summary>
         /// <see cref="IConsumer{TSingle,TMultiple,TPrimaryKey}.Register()">Register</see>
         /// </summary>
-        public void Register()
+        public Environment Register()
         {
-            registrationService.Register(ref environmentTemplate);
+            return registrationService.Register(ref environmentTemplate);
         }
 
         /// <summary>

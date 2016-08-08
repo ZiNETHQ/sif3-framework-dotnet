@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sif.Framework.Demo.Au.Provider", "Sif.Framework.Demo.Au.Provider\Sif.Framework.Demo.Au.Provider.csproj", "{60BEC332-9F81-493C-A61A-96F76E14CD73}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sif.Framework.Demo.Uk.SchoolA", "Sif.Framework.Demo.Uk.SchoolA\Sif.Framework.Demo.Uk.SchoolA.csproj", "{621B141F-B83D-4B26-8824-12B5AAA36014}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sif.Framework.Demo.Uk.SchoolB", "Sif.Framework.Demo.Uk.SchoolB\Sif.Framework.Demo.Uk.SchoolB.csproj", "{8A6EB75E-DCAC-422F-A314-70EDA64E9694}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sif.Framework.Demo.Hits.Consumer", "Sif.Framework.Demo.Hits.Consumer\Sif.Framework.Demo.Hits.Consumer.csproj", "{6F05F4B0-83CD-465A-8FF5-361424CD19BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{8A6EB75E-DCAC-422F-A314-70EDA64E9694}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A6EB75E-DCAC-422F-A314-70EDA64E9694}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A6EB75E-DCAC-422F-A314-70EDA64E9694}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F05F4B0-83CD-465A-8FF5-361424CD19BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F05F4B0-83CD-465A-8FF5-361424CD19BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F05F4B0-83CD-465A-8FF5-361424CD19BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F05F4B0-83CD-465A-8FF5-361424CD19BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

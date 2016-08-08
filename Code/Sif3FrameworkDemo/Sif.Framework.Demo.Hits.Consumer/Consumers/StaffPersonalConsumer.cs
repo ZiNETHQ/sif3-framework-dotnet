@@ -15,21 +15,21 @@
  */
 
 using Sif.Framework.Consumers;
-using Sif.Framework.Demo.Au.Consumer.Models;
-using Environment = Sif.Framework.Model.Infrastructure.Environment;
+using Sif.Framework.Demo.Hits.Consumer.Models;
+using Sif.Framework.Model.Infrastructure;
 
-namespace Sif.Framework.Demo.Au.Consumer
+namespace Sif.Framework.Demo.Hits.Consumer.Consumers
 {
 
-    class StudentPersonalConsumer : BasicConsumer<StudentPersonal>
+    class StaffPersonalConsumer : BasicConsumer<StaffPersonal>
     {
 
-        public StudentPersonalConsumer(string applicationKey = null, string instanceId = null, string userToken = null, string solutionId = null)
+        public StaffPersonalConsumer(string applicationKey = null, string instanceId = null, string userToken = null, string solutionId = null)
             : base(applicationKey, instanceId, userToken, solutionId)
         {
         }
 
-        public StudentPersonalConsumer(Environment environment)
+        public StaffPersonalConsumer(Environment environment)
             : base(environment)
         {
         }

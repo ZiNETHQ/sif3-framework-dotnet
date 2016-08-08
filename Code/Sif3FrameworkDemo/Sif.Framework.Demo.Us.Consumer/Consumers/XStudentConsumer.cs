@@ -18,7 +18,7 @@ using Sif.Framework.Consumers;
 using Sif.Framework.Demo.Us.Consumer.Models;
 using Sif.Framework.Model.Infrastructure;
 
-namespace Sif.Framework.Demo.Us.Consumer
+namespace Sif.Framework.Demo.Us.Consumer.Consumers
 {
 
     class XStudentConsumer : BasicConsumer<XStudent>

@@ -14,17 +14,26 @@
  * limitations under the License.
  */
 
-using Sif.Framework.Model.DataModels;
-using Sif.Specification.DataModel.Au;
-using System.Xml.Serialization;
+using Sif.Framework.Consumers;
+using Sif.Framework.Demo.Au.Consumer.Models;
+using Environment = Sif.Framework.Model.Infrastructure.Environment;
 
-namespace Sif.Framework.Demo.Au.Consumer.Models
+namespace Sif.Framework.Demo.Au.Consumer.Consumers
 {
 
-    [XmlRoot("StaffPersonal", Namespace = "http://www.sifassociation.org/au/datamodel/1.4", IsNullable = false)]
-    [XmlType(Namespace = "http://www.sifassociation.org/au/datamodel/1.4")]
-    public class StaffPersonal : StaffPersonalType, IDataModel
+    class StudentPersonalConsumer : BasicConsumer<StudentPersonal>
     {
+
+        public StudentPersonalConsumer(string applicationKey = null, string instanceId = null, string userToken = null, string solutionId = null)
+            : base(applicationKey, instanceId, userToken, solutionId)
+        {
+        }
+
+        public StudentPersonalConsumer(Environment environment)
+            : base(environment)
+        {
+        }
+
     }
 
 }

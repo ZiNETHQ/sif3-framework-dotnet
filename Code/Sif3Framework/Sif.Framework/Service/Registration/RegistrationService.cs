@@ -36,7 +36,7 @@ namespace Sif.Framework.Service.Registration
     public class RegistrationService : IRegistrationService
     {
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
+        
         private string environmentUrl;
         private ISessionService sessionService;
         private string sessionToken;
@@ -93,7 +93,7 @@ namespace Sif.Framework.Service.Registration
         /// </summary>
         public Environment Register()
         {
-            Environment environment = EnvironmentUtils.LoadFromSettings(SettingsManager.ProviderSettings);
+            Environment environment = EnvironmentUtils.LoadFromSettings(settings);
             return Register(ref environment);
         }
 

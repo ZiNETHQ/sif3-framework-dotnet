@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2014 Systemic Pty Ltd
+ * Crown Copyright © Department for Education (UK) 2016
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,18 @@
  * limitations under the License.
  */
 
+using AutoMapper;
 using Sif.Framework.Model.Infrastructure;
 using Sif.Specification.Infrastructure;
+using System.Collections.Generic;
 
-namespace Sif.Framework.Service.Infrastructure
+namespace Sif.Framework.Service.Mapper
 {
-    interface IEnvironmentService : ISifService<environmentType, Environment>
+    public class StatesConverter : ITypeConverter<stateType[], IList<PhaseState>>
     {
-        Environment RetrieveBySessionToken(string sessionToken);
-
+        public IList<PhaseState> Convert(stateType[] source, IList<PhaseState> destination, ResolutionContext context)
+        {
+            return new List<PhaseState>(context.Mapper.Map<stateType[], ICollection<PhaseState>>(source));
+        }
     }
 }

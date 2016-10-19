@@ -183,9 +183,9 @@ namespace Sif.Framework.Service.Infrastructure
 
             string sessionToken = AuthenticationUtils.GenerateSessionToken(item.applicationInfo.applicationKey, item.instanceId, item.userToken, item.solutionId);
 
-            environmentType environmentType = RetrieveBySessionToken(sessionToken);
+            Environment environment = RetrieveBySessionToken(sessionToken);
 
-            if (environmentType != null)
+            if (environment != null)
             {
                 string errorMessage = String.Format("A session token already exists for environment with application key of {0}, solution ID of {1}, instance ID of {2} and user token of {3}.",
                     item.applicationInfo.applicationKey, (item.solutionId == null ? "[null]" : item.solutionId), (item.instanceId == null ? "[null]" : item.instanceId), (item.userToken == null ? "[null]" : item.userToken));
@@ -229,10 +229,9 @@ namespace Sif.Framework.Service.Infrastructure
             return environmentId;
         }
 
-        public virtual environmentType RetrieveBySessionToken(string sessionToken)
+        public virtual Environment RetrieveBySessionToken(string sessionToken)
         {
-            Environment environment = ((EnvironmentRepository)repository).RetrieveBySessionToken(sessionToken);
-            return MapperFactory.CreateInstance<Environment, environmentType>(environment);
+            return ((EnvironmentRepository)repository).RetrieveBySessionToken(sessionToken);
         }
 
     }

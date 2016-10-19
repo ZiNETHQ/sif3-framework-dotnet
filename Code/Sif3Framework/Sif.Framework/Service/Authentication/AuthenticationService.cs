@@ -15,6 +15,7 @@
  */
 
 using Sif.Framework.Model.Infrastructure;
+using Sif.Framework.Service.Infrastructure;
 using Sif.Framework.Utils;
 using System.Net.Http.Headers;
 
@@ -26,6 +27,7 @@ namespace Sif.Framework.Service.Authentication
     /// </summary>
     abstract class AuthenticationService : IAuthenticationService
     {
+        protected IEnvironmentService environmentService;
 
         /// <summary>
         /// Retrieve the shared secret value associated with the passed in application key.
@@ -107,7 +109,10 @@ namespace Sif.Framework.Service.Authentication
             return VerifyAuthenticationHeader(header, true, out sessionToken);
         }
 
-        public abstract Environment GetEnvironmentBySessionToken(string sessionToken);
+        public virtual Environment GetEnvironmentBySessionToken(string sessionToken)
+        {
+            return environmentService.RetrieveBySessionToken(sessionToken);
+        }
 
     }
 

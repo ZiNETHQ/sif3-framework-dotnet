@@ -18,10 +18,8 @@ using Sif.Framework.Model.Exceptions;
 using Sif.Framework.Model.Infrastructure;
 using Sif.Framework.Model.Settings;
 using Sif.Framework.Service.Infrastructure;
-using Sif.Framework.Service.Mapper;
 using Sif.Framework.Service.Sessions;
 using Sif.Framework.Utils;
-using Sif.Specification.Infrastructure;
 using System.Net.Http.Headers;
 
 namespace Sif.Framework.Service.Authentication
@@ -33,7 +31,6 @@ namespace Sif.Framework.Service.Authentication
     class BrokeredAuthenticationService : AuthenticationService
     {
         private IApplicationRegisterService applicationRegisterService;
-        private IEnvironmentService environmentService;
         private IFrameworkSettings settings;
         private ISessionService sessionService;
 
@@ -59,14 +56,14 @@ namespace Sif.Framework.Service.Authentication
         /// </summary>
         protected override string SharedSecret(string sessionToken)
         {
-            environmentType environment = environmentService.RetrieveBySessionToken(sessionToken);
+            Environment environment = environmentService.RetrieveBySessionToken(sessionToken);
 
             if (environment == null)
             {
                 throw new InvalidSessionException();
             }
 
-            ApplicationRegister applicationRegister = applicationRegisterService.RetrieveByApplicationKey(environment.applicationInfo.applicationKey);
+            ApplicationRegister applicationRegister = applicationRegisterService.RetrieveByApplicationKey(environment.ApplicationInfo.ApplicationKey);
             return (applicationRegister == null ? null : applicationRegister.SharedSecret);
         }
 
@@ -79,12 +76,6 @@ namespace Sif.Framework.Service.Authentication
             string sessionToken;
             bool verified = VerifyAuthenticationHeader(header, false, out sessionToken);
             return (verified && sessionToken.Equals(storedSessionToken));
-        }
-
-        public override Environment GetEnvironmentBySessionToken(string sessionToken)
-        {
-            environmentType environment = environmentService.RetrieveBySessionToken(sessionToken);
-            return MapperFactory.CreateInstance<environmentType, Environment>(environment);
         }
 
     }

@@ -61,6 +61,13 @@ namespace Sif.Framework.Consumers
         }
 
         /// <summary>
+        /// Property to find out if the Consumer is registered.
+        /// </summary>
+        public bool registered {
+            get { return RegistrationService.Registered; }
+        }
+
+        /// <summary>
         /// Create a Consumer instance based upon the Environment passed.
         /// </summary>
         /// <param name="environment">Environment object.</param>
@@ -87,7 +94,7 @@ namespace Sif.Framework.Consumers
         /// <exception cref="InvalidOperationException"/>
         protected virtual void checkRegistered()
         {
-            if (!RegistrationService.Registered)
+            if (!registered)
             {
                 throw new InvalidOperationException("Consumer has not registered.");
             }

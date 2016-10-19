@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2014 Systemic Pty Ltd
+ * Crown Copyright © Department for Education (UK) 2016
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,25 @@
  * limitations under the License.
  */
 
+using AutoMapper;
 using Sif.Framework.Model.Infrastructure;
 using Sif.Specification.Infrastructure;
+using System.Collections.Generic;
 
-namespace Sif.Framework.Service.Infrastructure
+namespace Sif.Framework.Service.Mapper
 {
-    interface IEnvironmentService : ISifService<environmentType, Environment>
+    public class DeleteIdsConverter : ITypeConverter<deleteIdType[], ICollection<string>>
     {
-        Environment RetrieveBySessionToken(string sessionToken);
+        public ICollection<string> Convert(deleteIdType[] source, ICollection<string> destination, ResolutionContext context)
+        {
+            ICollection<string> deleteIds = new List<string>();
 
+            foreach (deleteIdType deleteId in source)
+            {
+                deleteIds.Add(deleteId.id);
+            }
+
+            return deleteIds;
+        }
     }
 }

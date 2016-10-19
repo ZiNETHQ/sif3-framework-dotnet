@@ -26,7 +26,6 @@ namespace Sif.Framework.Service.Mapper
     [TestClass]
     public class MapperFactoryTest
     {
-
         [TestMethod]
         public void EnvironmentRequestMapperTest()
         {

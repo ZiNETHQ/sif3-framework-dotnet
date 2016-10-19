@@ -1,11 +1,11 @@
 > Copyright 2016 Systemic Pty Ltd
-> 
+>
 > Licensed under the Apache License, Version 2.0 (the "License");
 > you may not use this file except in compliance with the License.
 > You may obtain a copy of the License at
-> 
+>
 > [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0 "Apache License, Version 2.0")
-> 
+>
 > Unless required by applicable law or agreed to in writing, software
 > distributed under the License is distributed on an "AS IS" BASIS,
 > WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,9 +23,9 @@ The framework includes a demo Solution that illustrates how to use it.
 
 ### Contributing to this framework
 
-See the [wiki associated with this repository](https://github.com/Access4Learning/sif3-framework-dotnet/wiki) for information on: 
+See the [wiki associated with this repository](https://github.com/Access4Learning/sif3-framework-dotnet/wiki) for information on:
 
-* contributing to this framework 
+* contributing to this framework
 * the Java coding style to be used and
 * the structure of the SIF 3 Framework repositories
 
@@ -295,6 +295,16 @@ To get started using this framework, read the *Sif3Framework .NET Developer's Gu
 - Added scripts to build projects from the command line
 
 **July ??, 2016 - ?.?.? Added demo projects for connecting to HITS**
+
+- Added a new demo project specifically for connecting to HITS.
+- Moved HITS specific Consumers from the demo.au.consumer project to the demo.hits.consumer project.
+- Added documentation for creating a Consumer for HITS connection.
+- Updated AU data models to SIF AU 3.4 in demo projects.
+- Removed SharedLibs/Sif.Framework 1.2.0 as that version was never released.
+- Fixed issue whereby SharedLibs/Sif.Framework 2.0.0 incorrectly contained version 3.0.0 of the framework.
+- Implemented message payload compression.
+
+**October ??, 2016 - ?.?.? Added demo projects for connecting to HITS**
 
 - Added a new demo project specifically for connecting to HITS.
 - Moved HITS specific Consumers from the demo.au.consumer project to the demo.hits.consumer project.

@@ -304,12 +304,7 @@ To get started using this framework, read the *Sif3Framework .NET Developer's Gu
 - Fixed issue whereby SharedLibs/Sif.Framework 2.0.0 incorrectly contained version 3.0.0 of the framework.
 - Implemented message payload compression.
 
-**October ??, 2016 - ?.?.? Added demo projects for connecting to HITS**
+**October ??, 2016 - ?.?.? Updated AutoMapper dependency**
 
-- Added a new demo project specifically for connecting to HITS.
-- Moved HITS specific Consumers from the demo.au.consumer project to the demo.hits.consumer project.
-- Added documentation for creating a Consumer for HITS connection.
-- Updated AU data models to SIF AU 3.4 in demo projects.
-- Removed SharedLibs/Sif.Framework 1.2.0 as that version was never released.
-- Fixed issue whereby SharedLibs/Sif.Framework 2.0.0 incorrectly contained version 3.0.0 of the framework.
-- Implemented message payload compression.
+- Changed the interface to the EnvironmentRepository so that when getting an Environment by a session token an Environment instance is returned rather than environmentType. This reduces redundant calles to automapper.
+- Updated AutoMapper to 5.1.1, keeping the same static interface for mapping between objects, but this is now a wrapper around AutoWrapper's Instance API rather than their static API, providing better compabibility with tools that also use AutoMapper.

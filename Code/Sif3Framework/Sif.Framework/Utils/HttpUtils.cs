@@ -514,6 +514,45 @@ namespace Sif.Framework.Utils
         }
 
         /// <summary>
+        /// Retrieve the authorization method from the header.
+        /// </summary>
+        /// <param name="headers">Request headers.</param>
+        /// <returns>Authorization method value if set; null otherwise.</returns>
+        internal static AuthorisationMethod GetAuthorizationMethod(HttpHeaders headers)
+        {
+            return GetAuthorisationMethod(GetHeaderValue(headers, RequestHeader.authorization.ToDescription()));
+        }
+
+        /// <summary>
+        /// Retrieve the authorization method property from the header.
+        /// </summary>
+        /// <returns>Authorization method value if set; null otherwise.</returns>
+        internal static AuthorisationMethod GetAuthorisationMethod()
+        {
+            HttpContext httpContext = HttpContext.Current;
+            NameValueCollection headers = httpContext?.Request.Headers;
+            return GetAuthorisationMethod(headers.Get(RequestHeader.authorization.ToDescription()));
+        }
+
+        public static AuthorisationMethod GetAuthorisationMethod(string authorisation)
+        {
+            if(StringUtils.IsEmpty(authorisation))
+            {
+                throw new ArgumentException("Authorisation header must not be empty");
+            }
+            AuthorisationMethod method = AuthorisationMethod.Basic;
+            string[] tokens = authorisation.Split(' ');
+            if(tokens.Length != 2)
+            {
+                throw new ArgumentException("Unexpected authorisation header format. '<METHOD> <TOKEN>' expected.");
+            }
+            if (Enum.TryParse<AuthorisationMethod>(tokens[0], out method)) {
+                return method;
+            }
+            throw new UnsupportedException("Cannot find a supported authentication method");
+        }
+
+        /// <summary>
         /// Retrieve the applicationKey property from the header.
         /// </summary>
         /// <param name="headers">Request headers.</param>
@@ -606,13 +645,17 @@ namespace Sif.Framework.Utils
             // if authorization method is basic, exception otherwise
             string sessionToken = null;
             string sharedSecret = null;
-            if (AuthorisationMethod.Basic.ToDescription().Equals(SettingsManager.ProviderSettings.AuthenticationMethod))
+            AuthorisationMethod method = GetAuthorisationMethod();
+            switch (method)
             {
-                AuthenticationUtils.getBasicAuthorisationTokens(HttpUtils.GetAuthorization(), out sessionToken, out sharedSecret);
-            }
-            else
-            {
-                throw new RejectedException("Only BASIC authentication is currently supported, but authorization is set as: " + SettingsManager.ProviderSettings.AuthenticationMethod);
+                case AuthorisationMethod.Basic:
+                    AuthenticationUtils.getBasicAuthorisationTokens(HttpUtils.GetAuthorization(), out sessionToken, out sharedSecret);
+                    break;
+                case AuthorisationMethod.HMACSHA256:
+                    throw new UnsupportedException("HMACSHA256 is not a supported authorisation method at this time");
+                default:
+                    throw new UnsupportedException(method + " is not a supported authorisation method at this time, currently supported are: "
+                        + String.Join(", ", Enum.GetNames(typeof(AuthorisationMethod))));
             }
 
 
@@ -621,21 +664,13 @@ namespace Sif.Framework.Utils
                 throw new InvalidSessionException();
             }
 
-            String source = null;
+            string source = null;
 
             switch (SettingsManager.ProviderSettings.EnvironmentType)
             {
                 case EnvironmentType.DIRECT:
                     // Application key is either in header or in session token
-
-                    Environment environment = new EnvironmentRepository().RetrieveBySessionToken(sessionToken);
-
-                    if (environment == null)
-                    {
-                        throw new InvalidSessionException();
-                    }
-
-                    source = HttpUtils.GetApplicationKey() ?? environment.ApplicationInfo.ApplicationKey;
+                    source = HttpUtils.GetApplicationKey() ?? GetApplicationKey(sessionToken);
                     break;
                 case EnvironmentType.BROKERED:
                     // Application key must have been moved into sourceName property
@@ -648,6 +683,33 @@ namespace Sif.Framework.Utils
                 throw new NotFoundException("Could not identify consumer.");
             }
             return source;
+        }
+
+        private static string GetApplicationKey(string sessionToken)
+        {
+            // Try to get the application key from the session token
+            try
+            {
+                string applicationKey;
+                string instanceId;
+                string userToken;
+                string solutionId;
+                AuthenticationUtils.UnpackSessionToken(sessionToken, out applicationKey, out instanceId, out userToken, out solutionId);
+                return applicationKey;
+            }
+            catch(ArgumentException)
+            {
+                // Couldn't get the application key out of the session token, try using the environments repository instead.
+            }
+
+            Environment environment = new EnvironmentRepository().RetrieveBySessionToken(sessionToken);
+
+            if (environment == null)
+            {
+                throw new InvalidSessionException();
+            }
+
+            return environment.ApplicationInfo.ApplicationKey;
         }
     }
 }

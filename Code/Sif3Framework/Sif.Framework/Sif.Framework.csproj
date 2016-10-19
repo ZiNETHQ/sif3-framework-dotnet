@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="Consumers\FunctionalServiceConsumer.cs" />
     <Compile Include="Consumers\IBasicConsumer.cs" />
+    <Compile Include="Model\Exceptions\UnsupportedException.cs" />
     <Compile Include="Model\Infrastructure\SifAppAdmin.cs" />
     <Compile Include="Model\Infrastructure\SifObjectBinding.cs" />
     <Compile Include="Persistence\IBindingRepository.cs" />
@@ -252,12 +253,10 @@
     <EmbeddedResource Include="Persistence\NHibernate\Mapping\PhaseState.hbm.xml" />
     <EmbeddedResource Include="Persistence\NHibernate\Mapping\Phase.hbm.xml" />
     <EmbeddedResource Include="Persistence\NHibernate\Mapping\Job.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Persistence\NHibernate\Mapping\SifAppAdmin.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(ProjectDir)..\packages\MSBuildTasks.1.5.0.196\tools\MSBuild.Community.Tasks.Targets" />
+  <Import Project="$(ProjectDir)..\packages\MSBuildTasks.1.5.0.196\tools\MSBuild.Community.Tasks.Targets" Condition="Exists('$(ProjectDir)..\packages\MSBuildTasks.1.5.0.196\tools\MSBuild.Community.Tasks.Targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild"></Target>

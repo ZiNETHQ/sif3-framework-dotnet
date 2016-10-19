@@ -171,6 +171,20 @@ namespace Sif.Framework.Utils
             return Convert.ToBase64String(Encoding.UTF8.GetBytes(applicationKey + ":" + instanceId + ":" + userToken + ":" + solutionId));
         }
 
+        public static void UnpackSessionToken(string sessionToken, out string applicationKey, out string instanceId, out string userToken, out string solutionId)
+        {
+            string[] decoded = Encoding.UTF8.GetString(Convert.FromBase64String(sessionToken)).Split(':');
+            if(decoded.Length != 4)
+            {
+                throw new ArgumentException("Could not unpack the session token", "sessionToken");
+            }
+
+            applicationKey = decoded[0];
+            instanceId = decoded[1];
+            userToken = decoded[2];
+            solutionId = decoded[3];
+        }
+
     }
 
 }

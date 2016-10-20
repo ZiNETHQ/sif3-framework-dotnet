@@ -54,7 +54,7 @@ namespace Sif.Framework.Model.Settings
         }
 
         /// <summary>
-        /// Readonly collection indexer based upon a string index.
+        /// Read-only collection indexer based upon a string index.
         /// </summary>
         /// <param name="name">Index into the collection.</param>
         /// <returns>Session element at the specified index.</returns>
@@ -69,7 +69,7 @@ namespace Sif.Framework.Model.Settings
         }
 
         /// <summary>
-        /// <see cref="System.Configuration.CreateNewElement()"/>
+        /// <see cref="ConfigurationElementCollection.CreateNewElement()"/>
         /// </summary>
         protected override ConfigurationElement CreateNewElement()
         {
@@ -77,7 +77,7 @@ namespace Sif.Framework.Model.Settings
         }
 
         /// <summary>
-        /// <see cref="System.Configuration.GetElementKey(System.Configuration.ConfigurationElement)"/>
+        /// <see cref="ConfigurationElementCollection.GetElementKey(ConfigurationElement)"/>
         /// </summary>
         protected override object GetElementKey(ConfigurationElement element)
         {
@@ -85,7 +85,7 @@ namespace Sif.Framework.Model.Settings
         }
 
         /// <summary>
-        /// <see cref="System.Configuration.ConfigurationElementCollection.BaseAdd(System.Configuration.ConfigurationElement)"/>
+        /// <see cref="ConfigurationElementCollection.BaseAdd(ConfigurationElement)"/>
         /// </summary>
         public void Add(SessionElement session)
         {
@@ -93,7 +93,7 @@ namespace Sif.Framework.Model.Settings
         }
 
         /// <summary>
-        /// <see cref="System.Configuration.ConfigurationElementCollection.BaseClear()"/>
+        /// <see cref="ConfigurationElementCollection.BaseClear()"/>
         /// </summary>
         public void Clear()
         {
@@ -101,7 +101,7 @@ namespace Sif.Framework.Model.Settings
         }
 
         /// <summary>
-        /// <see cref="System.Configuration.ConfigurationElementCollection.BaseGetKey(System.Int32)"/>
+        /// <see cref="ConfigurationElementCollection.BaseGetKey(int)"/>
         /// </summary>
         public string GetKey(int index)
         {
@@ -109,7 +109,7 @@ namespace Sif.Framework.Model.Settings
         }
 
         /// <summary>
-        /// <see cref="System.Configuration.ConfigurationElementCollection.BaseRemove(System.String)"/>
+        /// <see cref="ConfigurationElementCollection.BaseRemove(object)"/>
         /// </summary>
         public void Remove(string name)
         {
@@ -118,7 +118,7 @@ namespace Sif.Framework.Model.Settings
 
         /// <summary>
         /// Removes the passed session element from the collection.
-        /// <see cref="System.Configuration.ConfigurationElementCollection.BaseRemove(System.Object)"/>
+        /// <see cref="ConfigurationElementCollection.BaseRemove(object)"/>
         /// </summary>
         public void Remove(SessionElement session)
         {
@@ -126,7 +126,7 @@ namespace Sif.Framework.Model.Settings
         }
 
         /// <summary>
-        /// <see cref="System.Configuration.ConfigurationElementCollection.RemoveAt(System.Int32)"/>
+        /// <see cref="ConfigurationElementCollection.BaseRemoveAt(int)"/>
         /// </summary>
         public void RemoveAt(int index)
         {

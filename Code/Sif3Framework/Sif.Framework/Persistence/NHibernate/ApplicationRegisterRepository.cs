@@ -30,7 +30,7 @@ namespace Sif.Framework.Persistence.NHibernate
 
         }
 
-        /// <see cref="Sif.Framework.Persistence.IApplicationRegisterRepository{T}.RetrieveByApplicationKey(string)">RetrieveByApplicationKey</see>
+        /// <see cref="IApplicationRegisterRepository.RetrieveByApplicationKey(string)">RetrieveByApplicationKey</see>
         public virtual ApplicationRegister RetrieveByApplicationKey(string applicationKey)
         {
 

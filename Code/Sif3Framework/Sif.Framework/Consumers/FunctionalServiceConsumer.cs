@@ -63,7 +63,7 @@ namespace Sif.Framework.Consumers
         /// <summary>
         /// Property to find out if the Consumer is registered.
         /// </summary>
-        public bool registered {
+        public bool Registered {
             get { return RegistrationService.Registered; }
         }
 
@@ -94,7 +94,7 @@ namespace Sif.Framework.Consumers
         /// <exception cref="InvalidOperationException"/>
         protected virtual void checkRegistered()
         {
-            if (!registered)
+            if (!Registered)
             {
                 throw new InvalidOperationException("Consumer has not registered.");
             }

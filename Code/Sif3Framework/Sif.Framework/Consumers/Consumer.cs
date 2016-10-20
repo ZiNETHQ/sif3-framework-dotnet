@@ -51,12 +51,10 @@ namespace Sif.Framework.Consumers
         /// </summary>
         protected Environment EnvironmentTemplate
         {
-
             get
             {
                 return environmentTemplate;
             }
-
         }
 
         /// <summary>
@@ -64,12 +62,10 @@ namespace Sif.Framework.Consumers
         /// </summary>
         protected RegistrationService RegistrationService
         {
-
             get
             {
                 return registrationService;
             }
-
         }
 
         /// <summary>
@@ -77,12 +73,10 @@ namespace Sif.Framework.Consumers
         /// </summary>
         protected virtual string TypeName
         {
-
             get
             {
                 return typeof(TSingle).Name;
             }
-
         }
 
         /// <summary>

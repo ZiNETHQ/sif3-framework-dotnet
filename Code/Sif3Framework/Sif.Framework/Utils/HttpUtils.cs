@@ -260,7 +260,7 @@ namespace Sif.Framework.Utils
 
         /// <summary>
         /// This method will additionally add the exception message to the reason phrase of the error response.
-        /// <see cref="System.Net.Http.HttpRequestMessageExtensions.CreateErrorResponse(System.Net.HttpStatusCode, System.Exception)"/>
+        /// <see cref="System.Net.Http.HttpRequestMessageExtensions.CreateErrorResponse(HttpStatusCode, Exception)"/>
         /// </summary>
         public static HttpResponseMessage CreateErrorResponse(HttpRequestMessage request, HttpStatusCode httpStatusCode, Exception exception)
         {
@@ -273,7 +273,7 @@ namespace Sif.Framework.Utils
 
         /// <summary>
         /// This method will additionally add the message specified to the reason phrase of the error response.
-        /// <see cref="System.Net.Http.HttpRequestMessageExtensions.CreateErrorResponse(System.Net.HttpStatusCode, System.String)"/>
+        /// <see cref="System.Net.Http.HttpRequestMessageExtensions.CreateErrorResponse(HttpStatusCode, string)"/>
         /// </summary>
         public static HttpResponseMessage CreateErrorResponse(HttpRequestMessage request, HttpStatusCode httpStatusCode, string message)
         {

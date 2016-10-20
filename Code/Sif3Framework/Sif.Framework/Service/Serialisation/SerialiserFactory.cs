@@ -53,7 +53,8 @@ namespace Sif.Framework.Service.Serialisation
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="types"></param>
+        /// <param name="type"></param>
+        /// <param name="rootAttribute"></param>
         /// <returns></returns>
         private static int GenerateKey(Type type, XmlRootAttribute rootAttribute)
         {

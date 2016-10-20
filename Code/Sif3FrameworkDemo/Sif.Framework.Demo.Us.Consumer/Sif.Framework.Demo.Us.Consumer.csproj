@@ -35,22 +35,22 @@
     <StartupObject>Sif.Framework.Demo.Us.Consumer.ConsumerApp</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Sif.Framework, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Sif.Framework, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\SharedLibs\Sif.Framework 3.0.0\Sif.Framework.dll</HintPath>
+      <HintPath>..\..\..\SharedLibs\Sif.Framework 3.1.0\Sif.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="Sif.Specification.DataModel.Us, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Sif.Specification.DataModel.Us">
       <HintPath>..\..\..\SharedLibs\Sif.Specification.DataModel.Us 3.3\Sif.Specification.DataModel.Us.dll</HintPath>
     </Reference>
-    <Reference Include="Sif.Specification.Infrastructure, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Sif.Specification.Infrastructure, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\SharedLibs\Sif.Specification.Infrastructure 3.2.0\Sif.Specification.Infrastructure.dll</HintPath>
     </Reference>
@@ -71,13 +71,16 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="packages.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="SifFramework.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

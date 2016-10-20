@@ -87,7 +87,7 @@ namespace Sif.Framework.Persistence.NHibernate
 
         }
 
-        /// <see cref="Sif.Framework.Persistence.IGenericRepository{T,PK}.Delete(IEnumerable<T>)">Delete</see>
+        /// <see cref="IGenericRepository{T, PK}.Delete(IEnumerable{T})">Delete</see>
         public virtual void Delete(IEnumerable<T> objs)
         {
 
@@ -199,7 +199,7 @@ namespace Sif.Framework.Persistence.NHibernate
             return objId;
         }
 
-        /// <see cref="Sif.Framework.Persistence.IGenericRepository{T,PK}.Save(IEnumerable<T>)">Save</see>
+        /// <see cref="Sif.Framework.Persistence.IGenericRepository{T,PK}.Save(IEnumerable{T})">Save</see>
         public virtual void Save(IEnumerable<T> objs)
         {
 

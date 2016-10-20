@@ -26,7 +26,7 @@ namespace Sif.Framework.WebApi.ControllerSelectors
     /// <summary>
     /// This class enhances the default controller selector to take into account Matrix Parameters.
     /// <para>This class is based upon code from the ASP.NET Web API Samples.</para>
-    /// <see cref="http://aspnet.codeplex.com/sourcecontrol/latest#Samples/WebApi/NamespaceControllerSelector/ReadMe.txt">
+    /// <see ref="http://aspnet.codeplex.com/sourcecontrol/latest#Samples/WebApi/NamespaceControllerSelector/ReadMe.txt">
     /// Namespace Controller Selector Sample
     /// </see>
     /// </summary>

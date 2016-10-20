@@ -15,25 +15,23 @@
  */
 
 using AutoMapper;
-using Sif.Framework.Model.Infrastructure;
 using Sif.Specification.Infrastructure;
 using System.Collections.Generic;
 
-namespace Sif.Framework.Service.Mapper
+namespace Sif.Framework.Service.Mapper.Converters
 {
-    public class PropertiesConverter : ITypeConverter<propertyType[], IDictionary<string, Property>>
+    public class DeleteIdsConverter : ITypeConverter<deleteIdType[], ICollection<string>>
     {
-        public IDictionary<string, Property> Convert(propertyType[] source, IDictionary<string, Property> destination, ResolutionContext context)
+        public ICollection<string> Convert(deleteIdType[] source, ICollection<string> destination, ResolutionContext context)
         {
-            ICollection<Property> values = context.Mapper.Map<propertyType[], ICollection<Property>>(source);
-            IDictionary<string, Property> properties = new Dictionary<string, Property>();
+            ICollection<string> deleteIds = new List<string>();
 
-            foreach (Property property in values)
+            foreach (deleteIdType deleteId in source)
             {
-                properties.Add(property.Name, property);
+                deleteIds.Add(deleteId.id);
             }
 
-            return properties;
+            return deleteIds;
         }
     }
 }

@@ -19,21 +19,21 @@ using Sif.Framework.Model.Infrastructure;
 using Sif.Specification.Infrastructure;
 using System.Collections.Generic;
 
-namespace Sif.Framework.Service.Mapper
+namespace Sif.Framework.Service.Mapper.Converters
 {
-    public class PhasesConverter : ITypeConverter<phaseType[], IDictionary<string, Phase>>
+    public class PropertiesConverter : ITypeConverter<propertyType[], IDictionary<string, Property>>
     {
-        public IDictionary<string, Phase> Convert(phaseType[] source, IDictionary<string, Phase> destination, ResolutionContext context)
+        public IDictionary<string, Property> Convert(propertyType[] source, IDictionary<string, Property> destination, ResolutionContext context)
         {
-            ICollection<Phase> values = context.Mapper.Map<phaseType[], ICollection<Phase>>(source);
-            IDictionary<string, Phase> phases = new Dictionary<string, Phase>();
+            ICollection<Property> values = context.Mapper.Map<propertyType[], ICollection<Property>>(source);
+            IDictionary<string, Property> properties = new Dictionary<string, Property>();
 
-            foreach (Phase phase in values)
+            foreach (Property property in values)
             {
-                phases.Add(phase.Name, phase);
+                properties.Add(property.Name, property);
             }
 
-            return phases;
+            return properties;
         }
     }
 }

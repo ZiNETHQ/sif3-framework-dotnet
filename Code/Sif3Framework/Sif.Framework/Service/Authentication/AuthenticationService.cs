@@ -85,7 +85,7 @@ namespace Sif.Framework.Service.Authentication
         }
 
         /// <summary>
-        /// <see cref="Sif.Framework.Service.Authentication.IAuthenticationService.VerifyAuthenticationHeader(System.Net.Http.Headers.AuthenticationHeaderValue, System.Boolean, System.String)">VerifyAuthenticationHeader</see>
+        /// <see cref="VerifyAuthenticationHeader(AuthenticationHeaderValue, bool, out string)">VerifyAuthenticationHeader</see>
         /// </summary>
         public virtual bool VerifyAuthenticationHeader(AuthenticationHeaderValue header)
         {
@@ -94,7 +94,7 @@ namespace Sif.Framework.Service.Authentication
         }
 
         /// <summary>
-        /// <see cref="Sif.Framework.Service.Authentication.IAuthenticationService.VerifyAuthenticationHeader(System.Net.Http.Headers.AuthenticationHeaderValue, System.Boolean, System.String)">VerifyAuthenticationHeader</see>
+        /// <see cref="VerifyAuthenticationHeader(AuthenticationHeaderValue, bool, out string)">VerifyAuthenticationHeader</see>
         /// </summary>
         public virtual bool VerifyAuthenticationHeader(AuthenticationHeaderValue header, out string sessionToken)
         {
@@ -102,7 +102,7 @@ namespace Sif.Framework.Service.Authentication
         }
 
         /// <summary>
-        /// <see cref="Sif.Framework.Service.Authentication.IAuthenticationService.VerifyAuthenticationHeader(System.Net.Http.Headers.AuthenticationHeaderValue, System.Boolean)">VerifyAuthenticationHeader</see>
+        /// <see cref="VerifyAuthenticationHeader(AuthenticationHeaderValue, bool, out string)">VerifyAuthenticationHeader</see>
         /// </summary>
         public virtual bool VerifyInitialAuthenticationHeader(AuthenticationHeaderValue header, out string sessionToken)
         {

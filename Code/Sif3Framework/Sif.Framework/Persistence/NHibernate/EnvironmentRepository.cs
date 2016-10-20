@@ -30,7 +30,7 @@ namespace Sif.Framework.Persistence.NHibernate
 
         }
 
-        /// <see cref="Sif.Framework.Persistence.IEnvironmentRepository{T}.RetrieveBySessionToken(string)">RetrieveBySessionToken</see>
+        /// <see cref="Persistence.IEnvironmentRepository.RetrieveBySessionToken(string)">RetrieveBySessionToken</see>
         public virtual Environment RetrieveBySessionToken(string sessionToken)
         {
 

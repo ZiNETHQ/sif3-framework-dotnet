@@ -26,7 +26,7 @@ namespace Sif.Framework.WebApi.RouteConstraints
     /// <summary>
     /// This constraint will match a route starting with the segmentPrefix + ";" or the segmentPrefix only.
     /// <para>This class is based upon code from the ASP.NET Web API Samples.</para>
-    /// <see cref="https://aspnet.codeplex.com/SourceControl/latest#Samples/WebApi/RouteConstraintsAndModelBindersSample/ReadMe.txt">
+    /// <see ref="https://aspnet.codeplex.com/SourceControl/latest#Samples/WebApi/RouteConstraintsAndModelBindersSample/ReadMe.txt">
     /// Route Constraints and Model Binders by Implementing Matrix Parameters Sample
     /// </see>
     /// </summary>

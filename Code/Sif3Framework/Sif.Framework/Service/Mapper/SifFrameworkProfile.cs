@@ -18,6 +18,7 @@ using AutoMapper;
 using Sif.Framework.Model.Infrastructure;
 using Sif.Framework.Model.Requests;
 using Sif.Framework.Model.Responses;
+using Sif.Framework.Service.Mapper.Converters;
 using Sif.Framework.Utils;
 using Sif.Specification.Infrastructure;
 using System;
@@ -27,7 +28,7 @@ using Environment = Sif.Framework.Model.Infrastructure.Environment;
 
 namespace Sif.Framework.Service.Mapper
 {
-    internal class SifFrameworkProfile : Profile
+    public class SifFrameworkProfile : Profile
     {
         public SifFrameworkProfile()
         {

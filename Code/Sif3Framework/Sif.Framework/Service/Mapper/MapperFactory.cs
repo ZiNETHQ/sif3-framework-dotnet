@@ -15,15 +15,7 @@
  */
 
 using AutoMapper;
-using Sif.Framework.Model.Infrastructure;
-using Sif.Framework.Model.Requests;
-using Sif.Framework.Model.Responses;
-using Sif.Framework.Utils;
-using Sif.Specification.Infrastructure;
-using System;
 using System.Collections.Generic;
-using System.Xml;
-using Environment = Sif.Framework.Model.Infrastructure.Environment;
 
 namespace Sif.Framework.Service.Mapper
 {
@@ -43,21 +35,14 @@ namespace Sif.Framework.Service.Mapper
             mapper = mapperConfiguration.CreateMapper();
         }
 
-        public static D CreateInstance<S, D>(S source)
+        public static Dst CreateInstance<Src, Dst>(Src source)
         {
-
-            var types = mapperConfiguration.GetAllTypeMaps();
-
-            D destination = default(D);
-            destination = mapper.Map<D>(source);
-            return destination;
+            return mapper.Map<Dst>(source);
         }
 
-        public static ICollection<D> CreateInstances<S, D>(IEnumerable<S> source)
+        public static ICollection<Dst> CreateInstances<Src, Dst>(IEnumerable<Src> source)
         {
-            ICollection<D> destination = null;
-            destination = mapper.Map<IEnumerable<S>, ICollection<D>>(source);
-            return destination;
+            return mapper.Map<IEnumerable<Src>, ICollection<Dst>>(source);
         }
 
     }

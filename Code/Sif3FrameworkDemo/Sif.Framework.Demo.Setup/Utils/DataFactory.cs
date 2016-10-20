@@ -42,6 +42,11 @@ namespace Sif.Framework.Demo.Setup.Utils
 
             string path = "Data files\\" + locale.ToUpper() + "\\AppAdmin.csv";
 
+            if(!File.Exists(path))
+            {
+                return records;
+            }
+
             var reader = new StreamReader(File.OpenRead(@path));
             while (!reader.EndOfStream)
             {

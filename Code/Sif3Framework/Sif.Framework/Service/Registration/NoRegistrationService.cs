@@ -53,7 +53,7 @@ namespace Sif.Framework.Service.Registration
         }
 
         /// <summary>
-        /// <see cref="Sif.Framework.Service.Registration.IRegistrationService.Register(Sif.Framework.Model.Infrastructure.Environment)">Register</see>
+        /// <see cref="IRegistrationService.Register(ref Environment)">Register</see>
         /// </summary>
         public Environment Register(ref Environment environment)
         {

@@ -19,20 +19,21 @@ using Sif.Framework.Model.Infrastructure;
 using Sif.Specification.Infrastructure;
 using System.Collections.Generic;
 
-namespace Sif.Framework.Service.Mapper
+namespace Sif.Framework.Service.Mapper.Converters
 {
-    public class DeleteIdsConverter : ITypeConverter<deleteIdType[], ICollection<string>>
+    public class PhasesConverter : ITypeConverter<phaseType[], IDictionary<string, Phase>>
     {
-        public ICollection<string> Convert(deleteIdType[] source, ICollection<string> destination, ResolutionContext context)
+        public IDictionary<string, Phase> Convert(phaseType[] source, IDictionary<string, Phase> destination, ResolutionContext context)
         {
-            ICollection<string> deleteIds = new List<string>();
+            ICollection<Phase> values = context.Mapper.Map<phaseType[], ICollection<Phase>>(source);
+            IDictionary<string, Phase> phases = new Dictionary<string, Phase>();
 
-            foreach (deleteIdType deleteId in source)
+            foreach (Phase phase in values)
             {
-                deleteIds.Add(deleteId.id);
+                phases.Add(phase.Name, phase);
             }
 
-            return deleteIds;
+            return phases;
         }
     }
 }

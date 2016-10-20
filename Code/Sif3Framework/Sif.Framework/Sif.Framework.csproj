@@ -42,18 +42,20 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Iesi.Collections.4.0.1.4000\lib\net40\Iesi.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NHibernate.4.0.1.4000\lib\net40\NHibernate.dll</HintPath>
+      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="Sif.Specification.Infrastructure">
+    <Reference Include="Sif.Specification.Infrastructure, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\SharedLibs\Sif.Specification.Infrastructure 3.2.0\Sif.Specification.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -62,6 +64,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -172,14 +175,14 @@
     <Compile Include="Service\Infrastructure\EnvironmentRegisterService.cs" />
     <Compile Include="Service\Infrastructure\EnvironmentService.cs" />
     <Compile Include="Service\IService.cs" />
-    <Compile Include="Service\Mapper\DeleteIdsConverter.cs" />
-    <Compile Include="Service\Mapper\InfrastructureServicesConverter.cs" />
-    <Compile Include="Service\Mapper\PhaseConverter.cs" />
-    <Compile Include="Service\Mapper\PropertiesConverter.cs" />
+    <Compile Include="Service\Mapper\Converters\DeleteIdsConverter.cs" />
+    <Compile Include="Service\Mapper\Converters\InfrastructureServicesConverter.cs" />
+    <Compile Include="Service\Mapper\Converters\PhaseConverter.cs" />
+    <Compile Include="Service\Mapper\Converters\PropertiesConverter.cs" />
     <Compile Include="Service\Mapper\SifFrameworkProfile.cs" />
-    <Compile Include="Service\Mapper\RightsConverter.cs" />
-    <Compile Include="Service\Mapper\ProvisionedZonesConverter.cs" />
-    <Compile Include="Service\Mapper\StatesConverter.cs" />
+    <Compile Include="Service\Mapper\Converters\RightsConverter.cs" />
+    <Compile Include="Service\Mapper\Converters\ProvisionedZonesConverter.cs" />
+    <Compile Include="Service\Mapper\Converters\StatesConverter.cs" />
     <Compile Include="Service\Providers\IBasicProviderService.cs" />
     <Compile Include="Service\Providers\IProviderService.cs" />
     <Compile Include="Service\IObjectService.cs" />
@@ -235,6 +238,9 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="ClassDiagram.cd" />
+    <None Include="packages.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="SifFramework.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -261,7 +267,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(ProjectDir)..\packages\MSBuildTasks.1.5.0.196\tools\MSBuild.Community.Tasks.Targets" Condition="Exists('$(ProjectDir)..\packages\MSBuildTasks.1.5.0.196\tools\MSBuild.Community.Tasks.Targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild"></Target>
   -->

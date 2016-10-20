@@ -26,7 +26,7 @@ namespace Sif.Framework.WebApi.ModelBinders
     /// <summary>
     /// Used to bind the segment prefix value from the route.
     /// <para>This class is based upon code from the ASP.NET Web API Samples.</para>
-    /// <see cref="https://aspnet.codeplex.com/SourceControl/latest#Samples/WebApi/RouteConstraintsAndModelBindersSample/ReadMe.txt">
+    /// <see ref="https://aspnet.codeplex.com/SourceControl/latest#Samples/WebApi/RouteConstraintsAndModelBindersSample/ReadMe.txt">
     /// Route Constraints and Model Binders by Implementing Matrix Parameters Sample
     /// </see>
     /// </summary>

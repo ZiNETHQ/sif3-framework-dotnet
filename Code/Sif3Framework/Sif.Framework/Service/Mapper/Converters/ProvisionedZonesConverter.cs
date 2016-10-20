@@ -19,7 +19,7 @@ using Sif.Framework.Model.Infrastructure;
 using Sif.Specification.Infrastructure;
 using System.Collections.Generic;
 
-namespace Sif.Framework.Service.Mapper
+namespace Sif.Framework.Service.Mapper.Converters
 {
     public class ProvisionedZonesConverter : ITypeConverter<provisionedZoneType[], IDictionary<string, ProvisionedZone>>
     {

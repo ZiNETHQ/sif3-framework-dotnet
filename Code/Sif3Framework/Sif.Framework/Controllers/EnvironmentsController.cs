@@ -224,6 +224,8 @@ namespace Sif.Framework.Controllers
         /// </summary>
         /// <param name="id">Identifier for the object to update.</param>
         /// <param name="item">Object to update.</param>
+        /// <param name="zone">Zone of access</param>
+        /// <param name="context">Context of request</param>
         public override void Put(Guid id, environmentType item, [MatrixParameter] string[] zone = null, [MatrixParameter] string[] context = null)
         {
             throw new HttpResponseException(HttpStatusCode.Forbidden);

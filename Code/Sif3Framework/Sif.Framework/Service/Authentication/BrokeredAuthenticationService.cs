@@ -26,7 +26,7 @@ namespace Sif.Framework.Service.Authentication
 {
 
     /// <summary>
-    /// <see cref="Sif.Framework.Service.Authentication.AuthenticationService">AuthenticationService</see>
+    /// <see cref="AuthenticationService">AuthenticationService</see>
     /// </summary>
     class BrokeredAuthenticationService : AuthenticationService
     {
@@ -68,7 +68,7 @@ namespace Sif.Framework.Service.Authentication
         }
 
         /// <summary>
-        /// <see cref="Sif.Framework.Service.Authentication.IAuthenticationService.VerifyAuthenticationHeader(System.Net.Http.Headers.AuthenticationHeaderValue, System.Boolean)">VerifyAuthenticationHeader</see>
+        /// <see cref="AuthenticationService.VerifyAuthenticationHeader(AuthenticationHeaderValue, bool, out string)">VerifyAuthenticationHeader</see>
         /// </summary>
         public override bool VerifyAuthenticationHeader(AuthenticationHeaderValue header)
         {
